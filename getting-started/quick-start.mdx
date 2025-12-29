@@ -1,0 +1,62 @@
+---
+title: Quick Start
+description: Build your first SuperDocs site in minutes.
+---
+
+# Quick Start
+
+In this guide, we'll walk through creating your first documentation site with SuperDocs.
+
+## 1. Prepare your Content
+
+Create a new folder named `my-docs` and add an `index.mdx` file:
+
+```markdown
+---
+title: Welcome
+description: My first SuperDocs site
+---
+
+# Hello World
+
+This is my documentation site!
+```
+
+## 2. Add Configuration
+
+Inside `my-docs`, create a `docs-config.json` file:
+
+```json
+{
+  "metadata": {
+    "name": "My Docs",
+    "description": "My awesome documentation"
+  },
+  "navigation": {
+    "sidebar": [
+      {
+        "label": "Welcome",
+        "href": "/"
+      }
+    ]
+  }
+}
+```
+
+## 3. Run the Dev Server
+
+Run the following command in your terminal (make sure you are in the parent directory of `my-docs`):
+
+```bash
+npx superdocs dev -i ./my-docs
+```
+
+## 4. View your Site
+
+Open `http://localhost:3000` in your browser. You should see your "Hello World" page!
+
+## What's Next?
+
+- Add more pages.
+- Group pages into folders.
+- Update `docs-config.json` to organize your sidebar.

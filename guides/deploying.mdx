@@ -1,0 +1,59 @@
+---
+title: Deployment
+description: How to deploy your SuperDocs site to production.
+---
+
+# Deployment
+
+Since SuperDocs generates a static site, you can deploy it to any static hosting provider.
+
+## Building for Production
+
+To create a production build, run:
+
+```bash
+npx superdocs build -i ./my-docs
+```
+
+This will generate a `dist` folder containing your static HTML, CSS, and JS files.
+
+## Vercel
+
+1.  Push your code to a Git repository.
+2.  Import the project into Vercel.
+3.  Set the **Build Command** to: `npx superdocs build -i ./docs` (adjust `./docs` to your folder).
+4.  Set the **Output Directory** to: `dist`.
+5.  Deploy!
+
+## Netlify
+
+1.  Push your code to a Git repository.
+2.  New site from Git.
+3.  **Build command**: `npx superdocs build -i ./docs`.
+4.  **Publish directory**: `dist`.
+5.  Deploy site.
+
+## GitHub Pages
+
+You can use a GitHub Action to build and deploy.
+
+```yaml
+name: Deploy Docs
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+            node-version: 18
+      - run: npx superdocs build -i ./docs
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+```

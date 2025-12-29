@@ -1,0 +1,60 @@
+---
+title: Configuration
+description: Full reference for docs-config.json.
+---
+
+# Configuration
+
+The `docs-config.json` file controls the global settings of your site.
+
+## Configuration Object
+
+The root object takes the following properties:
+
+| Property | Type | Description |
+| :--- | :--- | :--- |
+| `metadata` | `object` | Site meta information (title, description). |
+| `branding` | `object` | Logo and favicon settings. |
+| `navigation` | `object` | Sidebar and navbar structure. |
+| `theme` | `object` | Color palette customization. |
+| `seo` | `object` | Social sharing settings. |
+| `landing` | `object` | Landing page configuration (optional). |
+
+## `metadata`
+
+```json
+"metadata": {
+  "name": "Site Name",
+  "description": "Site description"
+}
+```
+
+## `navigation`
+
+```json
+"navigation": {
+  "navbar": {
+    "links": [
+      { "label": "GitHub", "href": "..." }
+    ],
+    "cta": { "label": "Get Started", "href": "..." }
+  },
+  "sidebar": [
+    {
+      "label": "Group Name",
+      "items": [
+        { "label": "Page Name", "href": "/path/to/page" }
+      ]
+    }
+  ]
+}
+```
+
+## `theme`
+
+```json
+"theme": {
+  "primaryColor": "#6366f1",
+  "accentColor": "#22d3ee"
+}
+```

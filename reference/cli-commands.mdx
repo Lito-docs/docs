@@ -1,0 +1,44 @@
+---
+title: CLI Commands
+description: Reference for the SuperDocs CLI.
+---
+
+# CLI Commands
+
+The SuperDocs CLI allows you to develop, build, and manage your documentation site.
+
+## `dev`
+
+Starts a local development server with hot reloading.
+
+```bash
+npx superdocs dev [options]
+```
+
+| Option | Alias | Description | Default |
+| :--- | :--- | :--- | :--- |
+| `--input` | `-i` | Input directory containing docs | `.` |
+| `--port` | `-p` | Port to run the server on | `3000` |
+
+## `build`
+
+Builds the documentation for production.
+
+```bash
+npx superdocs build [options]
+```
+
+| Option | Alias | Description | Default |
+| :--- | :--- | :--- | :--- |
+| `--input` | `-i` | Input directory containing docs | `.` |
+| `--output` | `-o` | Output directory for static files | `dist` |
+
+## `create`
+
+Scaffolds a new SuperDocs project.
+
+```bash
+npx superdocs create <project-name>
+```
+
+Accepts the name of the directory to create. If not provided, it will prompt for one.

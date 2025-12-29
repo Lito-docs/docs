@@ -1,0 +1,46 @@
+---
+title: Project Structure
+description: Understanding the generated file structure.
+---
+
+# Project Structure
+
+When you run `superdocs dev` or `superdocs build`, the CLI processes your input folder and generates a full Astro project. Here's what your input folder should look like:
+
+```text
+my-docs/
+├── docs-config.json  # Global configuration
+├── index.mdx         # Homepage
+├── getting-started/  # A folder for a section
+│   ├── index.mdx     # Section landing page (optional)
+│   └── setup.mdx     # Content page
+└── api/
+    └── endpoints.mdx
+```
+
+## Key Files
+
+### `docs-config.json`
+
+This is the brain of your documentation site. It controls:
+- **Navigation**: The sidebar structure.
+- **Branding**: Logo, favicon, colors.
+- **SEO**: Meta tags, OpenGraph images.
+- **Integrations**: Analytics, etc.
+
+### `index.mdx`
+
+Every folder can have an `index.mdx` file.
+- The root `index.mdx` is your site's homepage (`/`).
+- Sub-folder `index.mdx` files (e.g., `getting-started/index.mdx`) are accessible at that route (`/getting-started`).
+
+### Frontmatter
+
+Every markdown file must have a frontmatter block at the top:
+
+```yaml
+---
+title: Page Title
+description: A short description for SEO and search.
+---
+```

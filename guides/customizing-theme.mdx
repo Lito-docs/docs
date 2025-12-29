@@ -1,0 +1,44 @@
+---
+title: Customizing Theme
+description: How to customize the look and feel of your SuperDocs site.
+---
+
+# Customizing Theme
+
+SuperDocs allows you to easily customize the appearance of your documentation site to match your brand.
+
+## Basic Colors
+
+The easiest way to change the theme is by modifying the `theme` object in your `docs-config.json`.
+
+```json
+{
+  "theme": {
+    "primaryColor": "#6366f1",
+    "accentColor": "#22d3ee"
+  }
+}
+```
+
+- **primaryColor**: The main brand color (links, buttons).
+- **accentColor**: Used for highlights and gradients.
+
+## Logo and Favicon
+
+You can update your logo and favicon in the `branding` section:
+
+```json
+{
+  "branding": {
+    "logo": {
+      "src": "/logo.svg",
+      "href": "/"
+    },
+    "favicon": "/favicon.svg"
+  }
+}
+```
+
+Ensure your `logo.svg` and `favicon.svg` files are placed in the `public` directory of your docs folder (or if using a simple folder structure, just in the root alongside `docs-config.json`, though `public` folder support is idiomatic Astro).
+
+*Note: For the current version, place static assets in the root folder and reference them relative to root.*

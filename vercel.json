@@ -1,0 +1,4 @@
+{
+  "buildCommand": "npx --yes @devrohit06/superdocs build -i .",
+  "outputDirectory": "dist"
+}

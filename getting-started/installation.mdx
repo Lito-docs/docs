@@ -1,0 +1,54 @@
+---
+title: Installation
+description: How to install and set up SuperDocs.
+---
+
+# Installation
+
+Getting started with SuperDocs is straightforward. You can run it directly via `npx` or install it as a dependency in your project.
+
+## Prerequisites
+
+- **Node.js**: Version 18.0.0 or higher.
+- **npm**, **yarn**, or **pnpm**.
+
+## Method 1: The Quickest Way (npx)
+
+If you just want to spin up a docs site from an existing folder of markdown files:
+
+```bash
+npx superdocs dev -i ./my-docs-folder
+```
+
+This command will:
+1.  Scaffold a temporary Astro project.
+2.  Copy your docs into it.
+3.  Start a local development server at `http://localhost:3000`.
+
+## Method 2: Adding to an existing project
+
+If you want to keep your docs versioned with your code:
+
+1.  Create a `docs` folder in your repo.
+2.  Add a `docs-config.json` file inside it.
+3.  Add some `.md` or `.mdx` files.
+4.  Run from your root:
+
+```bash
+npx superdocs dev -i ./docs
+```
+
+## Method 3: Scaffold a new Docs Site
+
+To create a brand new SuperDocs project:
+
+```bash
+npx superdocs create my-new-docs
+cd my-new-docs
+npm install
+npm run dev
+```
+
+## CLI Reference
+
+See the [CLI Commands](/reference/cli-commands) page for a full list of available flags and options.

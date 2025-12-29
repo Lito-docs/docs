@@ -1,0 +1,57 @@
+---
+title: Adding Pages
+description: How to add and organize documentation pages.
+---
+
+# Adding Pages
+
+SuperDocs uses a file-system based routing, but the sidebar navigation is explicitly defined in `docs-config.json`. This gives you full control over the order and hierarchy of your docs.
+
+## Step 1: Create the File
+
+Create a new Markdown or MDX file anywhere in your content folder.
+
+```text
+my-docs/
+  guides/
+    new-page.mdx
+```
+
+## Step 2: Add Frontmatter
+
+Add metadata to your file:
+
+```markdown
+---
+title: My New Guide
+description: This is a new guide I created.
+---
+
+# My New Guide
+
+Content goes here...
+```
+
+## Step 3: Update Config
+
+Add the page to your sidebar in `docs-config.json`.
+
+```json
+{
+  "navigation": {
+    "sidebar": [
+      {
+        "label": "Guides",
+        "items": [
+          {
+            "label": "My New Guide",
+            "href": "/guides/new-page"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+The `href` should match the file path relative to the root, minus the extension.

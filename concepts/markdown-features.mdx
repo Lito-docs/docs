@@ -1,0 +1,70 @@
+---
+title: Markdown Features
+description: Supported Markdown and MDX features.
+---
+
+# Markdown Features
+
+SuperDocs supports standard GitHub Flavored Markdown (GFM) and MDX.
+
+## Standard Syntax
+
+You can use all standard markdown features:
+
+- **Bold**: `**text**` -> **text**
+- *Italic*: `*text*` -> *text*
+- [Links](https://example.com)
+- Lists (ordered and unordered)
+- Blockquotes
+
+## Code Blocks
+
+We use Shiki for syntax highlighting.
+
+\`\`\`javascript
+console.log('Hello World');
+\`\`\`
+
+## Callouts / Admonitions
+
+We support GitHub style alerts:
+
+> [!NOTE]
+> This is a note.
+
+> [!TIP]
+> This is a tip.
+
+> [!IMPORTANT]
+> This is important information.
+
+> [!WARNING]
+> This is a warning.
+
+> [!CAUTION]
+> This is a caution.
+
+## MDX Components
+
+You can import and use components directly in your markdown. By default, SuperDocs exports several built-in components globally (no import needed).
+
+### Cards
+
+<Card title="Example Card" icon="star">
+  This is a card component.
+</Card>
+
+### Tabs
+
+<Tabs>
+  <Tab title="npm">
+  \`\`\`bash
+  npm install superdocs
+  \`\`\`
+  </Tab>
+  <Tab title="yarn">
+  \`\`\`bash
+  yarn add superdocs
+  \`\`\`
+  </Tab>
+</Tabs>

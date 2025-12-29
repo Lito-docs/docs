@@ -1,0 +1,3 @@
+[build]
+  command = "npx --yes @devrohit06/superdocs build -i ."
+  publish = "dist"

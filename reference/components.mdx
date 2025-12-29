@@ -1,0 +1,57 @@
+---
+title: Components
+description: Built-in components available in MDX.
+---
+
+# Components
+
+SuperDocs comes with a set of built-in components to make your documentation richer. These are available globally in all `.mdx` files.
+
+## Card
+
+A simple card component for links or highlights.
+
+```jsx
+<Card title="Title" icon="soem-icon" href="/link">
+  Content
+</Card>
+```
+
+| Prop | Type | Description |
+| :--- | :--- | :--- |
+| `title` | `string` | The card title. |
+| `icon` | `string` | Icon name (optional). |
+| `href` | `string` | URL to link to (optional). |
+
+## CardGroup
+
+A layout component to display Cards in a grid.
+
+```jsx
+<CardGroup>
+  <Card ... />
+  <Card ... />
+</CardGroup>
+```
+
+## Tabs
+
+Organize content into tabs.
+
+```jsx
+<Tabs>
+  <Tab title="Tab 1">
+    Content 1
+  </Tab>
+  <Tab title="Tab 2">
+    Content 2
+  </Tab>
+</Tabs>
+```
+
+## Note / Admonition
+
+See [Markdown Features](/concepts/markdown-features) for usage of GitHub-style alerts which render as admonitions.
+
+> [!NOTE]
+> Like this one.

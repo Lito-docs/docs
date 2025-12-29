@@ -1,0 +1,34 @@
+---
+title: Theming
+description: How theming and design tokens work in SuperDocs.
+---
+
+# Theming
+
+SuperDocs uses a CSS Variable based theming system, powered by Tailwind CSS.
+
+## Color System
+
+We define two main semantic colors in `docs-config.json`:
+
+1.  **Primary**: Used for links, active states, and primary buttons.
+2.  **Accent**: Used for highlights and secondary elements.
+
+These values are converted into CSS variables (H, S, L components) at runtime and injected into the page root.
+
+```css
+:root {
+  --color-primary: 99 102 241; /* #6366f1 converted to RGB/HSL channels */
+  --color-accent: 34 211 238;
+}
+```
+
+This allows us to support opacity modifiers in Tailwind (e.g., `bg-primary/50`).
+
+## Dark Mode
+
+Dark mode is supported out of the box. SuperDocs respects the user's system preference and persists manual overrides in `localStorage`.
+
+## Custom CSS
+
+You can inject custom CSS by adding a `styles` array to your `docs-config.json` (Coming Soon). For now, you can use inline `<style>` tags in your MDX files for page-specific overrides.
