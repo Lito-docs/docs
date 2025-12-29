@@ -1,159 +1,159 @@
 {
-    "metadata": {
-        "name": "SuperDocs Demo",
-        "description": "A comprehensive demo of SuperDocs - the open-source Mintlify alternative"
-    },
-    "branding": {
-        "favicon": "/favicon.svg",
-        "logo": {
-            "src": "/logo.svg",
-            "href": "/"
-        }
-    },
-    "theme": {
-        "primaryColor": "#6366f1",
-        "accentColor": "#22d3ee"
-    },
-    "navigation": {
-        "navbar": {
-            "links": [
-                {
-                    "label": "Documentation",
-                    "href": "/"
-                },
-                {
-                    "label": "GitHub",
-                    "href": "https://github.com/superdocs"
-                }
-            ],
-            "cta": {
-                "label": "Get Started",
-                "href": "/getting-started/installation"
-            }
-        },
-        "sidebar": [
-            {
-                "label": "Introduction",
-                "items": [
-                    {
-                        "label": "Welcome",
-                        "href": "/introduction"
-                    },
-                    {
-                        "label": "What is SuperDocs?",
-                        "href": "/introduction/what-is-superdocs"
-                    }
-                ]
-            },
-            {
-                "label": "Getting Started",
-                "items": [
-                    {
-                        "label": "Installation",
-                        "href": "/getting-started/installation"
-                    },
-                    {
-                        "label": "Quick Start",
-                        "href": "/getting-started/quick-start"
-                    },
-                    {
-                        "label": "Project Structure",
-                        "href": "/getting-started/project-structure"
-                    }
-                ]
-            },
-            {
-                "label": "Core Concepts",
-                "items": [
-                    {
-                        "label": "Architecture",
-                        "href": "/concepts/architecture"
-                    },
-                    {
-                        "label": "Theming",
-                        "href": "/concepts/theming"
-                    },
-                    {
-                        "label": "Markdown Features",
-                        "href": "/concepts/markdown-features"
-                    }
-                ]
-            },
-            {
-                "label": "Guides",
-                "items": [
-                    {
-                        "label": "Customizing Theme",
-                        "href": "/guides/customizing-theme"
-                    },
-                    {
-                        "label": "Adding Pages",
-                        "href": "/guides/adding-pages"
-                    },
-                    {
-                        "label": "Deployment",
-                        "href": "/guides/deploying"
-                    }
-                ]
-            },
-            {
-                "label": "Reference",
-                "items": [
-                    {
-                        "label": "CLI Commands",
-                        "href": "/reference/cli-commands"
-                    },
-                    {
-                        "label": "Configuration",
-                        "href": "/reference/configuration"
-                    },
-                    {
-                        "label": "Components",
-                        "href": "/reference/components"
-                    }
-                ]
-            }
-        ]
-    },
-    "seo": {
-        "ogImage": "/og-image.png",
-        "twitterHandle": "@superdocs"
-    },
-    "landing": {
-        "enabled": true,
-        "hero": {
-            "version": "v2.0 is now available",
-            "title": "SuperDocs <br/> <span class='text-primary'>Generated Landing</span>",
-            "subtitle": "This landing page is entirely defined in docs-config.json. No coding required.",
-            "cta": [
-                {
-                    "label": "Read the Docs",
-                    "href": "/getting-started/installation",
-                    "variant": "primary"
-                },
-                {
-                    "label": "GitHub",
-                    "href": "https://github.com",
-                    "variant": "secondary"
-                }
-            ]
-        },
-        "features": [
-            {
-                "title": "Zero Config",
-                "description": "Just add a JSON object and you have a landing page.",
-                "icon": "⚡"
-            },
-            {
-                "title": "Full Control",
-                "description": "Eject to MDX if you need custom components.",
-                "icon": "🎨"
-            },
-            {
-                "title": "Fast",
-                "description": "Built on Astro for maximum performance.",
-                "icon": "🚀"
-            }
-        ]
+  "metadata": {
+    "name": "SuperDocs Demo",
+    "description": "A comprehensive demo of SuperDocs - the open-source Mintlify alternative"
+  },
+  "branding": {
+    "favicon": "/favicon.svg",
+    "logo": {
+      "src": "/logo.svg",
+      "href": "/"
     }
+  },
+  "theme": {
+    "primaryColor": "#6366f1",
+    "accentColor": "#22d3ee"
+  },
+  "navigation": {
+    "navbar": {
+      "links": [
+        {
+          "label": "Documentation",
+          "href": "/"
+        },
+        {
+          "label": "GitHub",
+          "href": "https://github.com/superdocs"
+        }
+      ],
+      "cta": {
+        "label": "Get Started",
+        "href": "/getting-started/installation"
+      }
+    },
+    "sidebar": [
+      {
+        "label": "Introduction",
+        "items": [
+          {
+            "label": "Welcome",
+            "href": "/introduction"
+          },
+          {
+            "label": "What is SuperDocs?",
+            "href": "/introduction/what-is-superdocs"
+          }
+        ]
+      },
+      {
+        "label": "Getting Started",
+        "items": [
+          {
+            "label": "Installation",
+            "href": "/getting-started/installation"
+          },
+          {
+            "label": "Quick Start",
+            "href": "/getting-started/quick-start"
+          },
+          {
+            "label": "Project Structure",
+            "href": "/getting-started/project-structure"
+          }
+        ]
+      },
+      {
+        "label": "Core Concepts",
+        "items": [
+          {
+            "label": "Architecture",
+            "href": "/concepts/architecture"
+          },
+          {
+            "label": "Theming",
+            "href": "/concepts/theming"
+          },
+          {
+            "label": "Markdown Features",
+            "href": "/concepts/markdown-features"
+          }
+        ]
+      },
+      {
+        "label": "Guides",
+        "items": [
+          {
+            "label": "Customizing Theme",
+            "href": "/guides/customizing-theme"
+          },
+          {
+            "label": "Adding Pages",
+            "href": "/guides/adding-pages"
+          },
+          {
+            "label": "Deployment",
+            "href": "/guides/deploying"
+          }
+        ]
+      },
+      {
+        "label": "Reference",
+        "items": [
+          {
+            "label": "CLI Commands",
+            "href": "/reference/cli-commands"
+          },
+          {
+            "label": "Configuration",
+            "href": "/reference/configuration"
+          },
+          {
+            "label": "Components",
+            "href": "/reference/components"
+          }
+        ]
+      }
+    ]
+  },
+  "seo": {
+    "ogImage": "/og-image.png",
+    "twitterHandle": "@superdocs"
+  },
+  "landing": {
+    "enabled": true,
+    "hero": {
+      "version": "v2.0 is now available",
+      "title": "SuperDocs <br/> <span class='text-primary'>Generated Landing</span>",
+      "subtitle": "This landing page is entirely defined in docs-config.json. No coding required.",
+      "cta": [
+        {
+          "label": "Read the Docs",
+          "href": "/getting-started/installation",
+          "variant": "primary"
+        },
+        {
+          "label": "GitHub",
+          "href": "https://github.com",
+          "variant": "secondary"
+        }
+      ]
+    },
+    "features": [
+      {
+        "title": "Zero Config",
+        "description": "Just add a JSON object and you have a landing page.",
+        "icon": "⚡"
+      },
+      {
+        "title": "Full Control",
+        "description": "Eject to MDX if you need custom components.",
+        "icon": "🎨"
+      },
+      {
+        "title": "Fast",
+        "description": "Built on Astro for maximum performance.",
+        "icon": "🚀"
+      }
+    ]
+  }
 }

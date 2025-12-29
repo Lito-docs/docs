@@ -27,7 +27,7 @@ jobs:
           node-version: 18
 
       - name: Build docs
-        run: npx --yes @devrohit06/superdocs build -i .
+        run: npx --yes @devrohit06/superdocs build -i . --base-url /superdocs-demo/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
