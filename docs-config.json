@@ -91,6 +91,11 @@
             "href": "/guides/adding-pages"
           },
           {
+            "label": "SEO & Meta Tags",
+            "href": "/guides/seo",
+            "icon": "lucide:search"
+          },
+          {
             "label": "Deployment",
             "href": "/guides/deploying"
           }
@@ -112,8 +117,77 @@
             "href": "/reference/components"
           },
           {
-            "label": "API Reference",
-            "href": "/reference/api"
+            "label": "API Pages Guide",
+            "href": "/reference/api-pages"
+          }
+        ]
+      },
+      {
+        "label": "API Reference",
+        "items": [
+          {
+            "label": "Overview",
+            "href": "/api"
+          },
+          {
+            "label": "Users",
+            "items": [
+              {
+                "label": "List Users",
+                "href": "/api/get-users",
+                "method": "GET"
+              },
+              {
+                "label": "Create User",
+                "href": "/api/post-users",
+                "method": "POST"
+              },
+              {
+                "label": "Get User",
+                "href": "/api/get-users-id",
+                "method": "GET"
+              },
+              {
+                "label": "Update User",
+                "href": "/api/put-users-id",
+                "method": "PUT"
+              },
+              {
+                "label": "Delete User",
+                "href": "/api/delete-users-id",
+                "method": "DELETE"
+              }
+            ]
+          },
+          {
+            "label": "Posts",
+            "items": [
+              {
+                "label": "List Posts",
+                "href": "/api/get-posts",
+                "method": "GET"
+              },
+              {
+                "label": "Create Post",
+                "href": "/api/post-posts",
+                "method": "POST"
+              },
+              {
+                "label": "Get Post",
+                "href": "/api/get-posts-id",
+                "method": "GET"
+              }
+            ]
+          },
+          {
+            "label": "Comments",
+            "items": [
+              {
+                "label": "Get Post Comments",
+                "href": "/api/get-posts-id-comments",
+                "method": "GET"
+              }
+            ]
           }
         ]
       }
@@ -121,7 +195,14 @@
   },
   "seo": {
     "ogImage": "/og-image.png",
-    "twitterHandle": "@superdocs"
+    "twitterHandle": "@superdocs",
+    "defaultAuthor": "SuperDocs Team",
+    "defaultKeywords": ["documentation", "superdocs", "astro", "markdown"],
+    "enableJsonLd": true,
+    "organizationName": "SuperDocs",
+    "articleType": "TechArticle",
+    "autoCanonical": true,
+    "enableBreadcrumbs": true
   },
   "landing": {
     "enabled": true,

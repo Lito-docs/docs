@@ -1,0 +1,233 @@
+---
+title: SEO & Meta Tags
+description: Learn how to optimize your SuperDocs site for search engines with frontmatter SEO fields and JSON-LD structured data.
+icon: lucide:search
+author: SuperDocs Team
+keywords:
+  - seo
+  - meta tags
+  - open graph
+  - twitter cards
+  - json-ld
+---
+
+# SEO & Meta Tags
+
+SuperDocs includes comprehensive SEO support out of the box, including Open Graph tags, Twitter Cards, JSON-LD structured data, and per-page SEO customization.
+
+## Global SEO Configuration
+
+Configure default SEO settings in your `docs-config.json`:
+
+```json
+{
+  "seo": {
+    "ogImage": "/og-image.png",
+    "twitterHandle": "@yourhandle",
+    "twitterSite": "@sitehandle",
+    "defaultAuthor": "Your Name",
+    "defaultKeywords": ["docs", "api"],
+    "enableJsonLd": true,
+    "organizationName": "Your Organization",
+    "organizationLogo": "/logo.png",
+    "articleType": "TechArticle",
+    "autoCanonical": true,
+    "enableBreadcrumbs": true
+  }
+}
+```
+
+See the [Configuration Reference](/reference/configuration#seo) for details on each option.
+
+## Per-Page SEO Frontmatter
+
+Override global defaults on any page using frontmatter:
+
+```mdx
+---
+title: My Page Title
+description: A custom description for this specific page.
+canonical: https://example.com/my-page
+ogImage: /custom-og-image.png
+ogType: article
+keywords:
+  - custom
+  - keywords
+noIndex: false
+noFollow: false
+author: John Doe
+publishDate: 2025-01-01
+modifiedDate: 2025-01-15
+tags:
+  - tutorial
+  - guide
+readingTime: 5
+section: Getting Started
+---
+```
+
+### Available Frontmatter Fields
+
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| `title` | `string` | Page title (used in `<title>` and `og:title`). |
+| `description` | `string` | Page description for meta tags. |
+| `canonical` | `string` | Custom canonical URL (auto-generated if not set). |
+| `ogImage` | `string` | Custom Open Graph image for this page. |
+| `ogType` | `string` | OG type: `website`, `article`, `profile`, or `book`. |
+| `keywords` | `string[]` | SEO keywords (merged with global defaults). |
+| `noIndex` | `boolean` | Prevent search engines from indexing this page. |
+| `noFollow` | `boolean` | Prevent search engines from following links. |
+| `author` | `string` | Author name for article metadata. |
+| `publishDate` | `string` | Publication date (ISO 8601 format). |
+| `modifiedDate` | `string` | Last modified date (ISO 8601 format). |
+| `tags` | `string[]` | Article tags/categories. |
+| `readingTime` | `number` | Estimated reading time in minutes. |
+| `section` | `string` | Article section/category. |
+
+## Generated Meta Tags
+
+SuperDocs automatically generates the following meta tags:
+
+### Basic Meta Tags
+
+```html
+<title>Page Title | Site Name</title>
+<meta name="description" content="Page description" />
+<meta name="keywords" content="keyword1, keyword2" />
+<meta name="author" content="Author Name" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://example.com/page" />
+```
+
+### Open Graph Tags
+
+```html
+<meta property="og:title" content="Page Title | Site Name" />
+<meta property="og:description" content="Page description" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/page" />
+<meta property="og:image" content="https://example.com/og-image.png" />
+<meta property="og:site_name" content="Site Name" />
+<meta property="article:published_time" content="2025-01-01" />
+<meta property="article:modified_time" content="2025-01-15" />
+<meta property="article:author" content="Author Name" />
+<meta property="article:section" content="Getting Started" />
+<meta property="article:tag" content="tutorial" />
+```
+
+### Twitter Card Tags
+
+```html
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@sitehandle" />
+<meta name="twitter:creator" content="@authorhandle" />
+<meta name="twitter:title" content="Page Title | Site Name" />
+<meta name="twitter:description" content="Page description" />
+<meta name="twitter:image" content="https://example.com/og-image.png" />
+```
+
+## JSON-LD Structured Data
+
+SuperDocs generates JSON-LD structured data for better search engine understanding:
+
+### Article Schema
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Page Title",
+  "description": "Page description",
+  "author": {
+    "@type": "Person",
+    "name": "Author Name"
+  },
+  "datePublished": "2025-01-01",
+  "dateModified": "2025-01-15",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Your Organization",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://example.com/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://example.com/page"
+  },
+  "image": "https://example.com/og-image.png",
+  "keywords": "keyword1, keyword2",
+  "articleSection": "Getting Started"
+}
+```
+
+### Breadcrumb Schema
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Docs",
+      "item": "https://example.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Getting Started"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Installation"
+    }
+  ]
+}
+```
+
+## Best Practices
+
+<Card title="Use Descriptive Titles" icon="lucide:heading">
+  Keep titles under 60 characters for optimal display in search results.
+</Card>
+
+<Card title="Write Compelling Descriptions" icon="lucide:file-text">
+  Descriptions should be 150-160 characters and include relevant keywords.
+</Card>
+
+<Card title="Add Publish Dates" icon="lucide:calendar">
+  Include `publishDate` and `modifiedDate` for time-sensitive content.
+</Card>
+
+<Card title="Use Custom OG Images" icon="lucide:image">
+  Create page-specific OG images for important pages to improve social sharing.
+</Card>
+
+## Disabling SEO Features
+
+You can disable specific SEO features in your config:
+
+```json
+{
+  "seo": {
+    "enableJsonLd": false,
+    "autoCanonical": false,
+    "enableBreadcrumbs": false
+  }
+}
+```
+
+Or prevent indexing on specific pages:
+
+```mdx
+---
+title: Draft Page
+noIndex: true
+noFollow: true
+---
+```

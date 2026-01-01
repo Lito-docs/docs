@@ -19,7 +19,9 @@ my-docs/
 
 ## Step 2: Add Frontmatter
 
-Add metadata to your file:
+Add metadata to your file. SuperDocs supports extensive frontmatter for SEO and page configuration:
+
+### Basic Frontmatter
 
 ```markdown
 ---
@@ -31,6 +33,35 @@ description: This is a new guide I created.
 
 Content goes here...
 ```
+
+### Full SEO Frontmatter
+
+For complete SEO control, you can add additional fields:
+
+```markdown
+---
+title: My New Guide
+description: A comprehensive guide to getting started.
+canonical: https://docs.example.com/guides/new-page
+ogImage: /images/guide-og.png
+ogType: article
+keywords:
+  - tutorial
+  - guide
+  - getting started
+author: Your Name
+publishDate: 2025-01-01
+modifiedDate: 2025-01-15
+tags:
+  - beginner
+  - tutorial
+section: Guides
+readingTime: 10
+noIndex: false
+---
+```
+
+See the [SEO & Meta Tags](/guides/seo) guide for details on all available frontmatter fields.
 
 ## Step 3: Update Config
 
@@ -55,3 +86,18 @@ Add the page to your sidebar in `docs-config.json`.
 ```
 
 The `href` should match the file path relative to the root, minus the extension.
+
+## Frontmatter Reference
+
+| Field | Required | Description |
+| :--- | :--- | :--- |
+| `title` | Yes | Page title displayed in the header and browser tab. |
+| `description` | Recommended | Page description for SEO and social sharing. |
+| `canonical` | No | Custom canonical URL (auto-generated if not set). |
+| `ogImage` | No | Custom Open Graph image for this page. |
+| `author` | No | Author name for article metadata. |
+| `publishDate` | No | Publication date (ISO 8601 format). |
+| `modifiedDate` | No | Last modified date (ISO 8601 format). |
+| `keywords` | No | SEO keywords for this page. |
+| `tags` | No | Article tags/categories. |
+| `noIndex` | No | Set to `true` to hide from search engines. |

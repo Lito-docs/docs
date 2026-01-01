@@ -13,11 +13,11 @@ The root object takes the following properties:
 
 | Property | Type | Description |
 | :--- | :--- | :--- |
-| `metadata` | `object` | Site meta information (title, description). |
+| `metadata` | `object` | Site meta information (title, description, url). |
 | `branding` | `object` | Logo and favicon settings. |
 | `navigation` | `object` | Sidebar and navbar structure. |
 | `theme` | `object` | Color palette customization. |
-| `seo` | `object` | Social sharing settings. |
+| `seo` | `object` | SEO and social sharing settings. |
 | `landing` | `object` | Landing page configuration (optional). |
 
 ## `metadata`
@@ -25,9 +25,18 @@ The root object takes the following properties:
 ```json
 "metadata": {
   "name": "Site Name",
-  "description": "Site description"
+  "description": "Site description",
+  "url": "https://docs.example.com",
+  "version": "1.0.0"
 }
 ```
+
+| Property | Type | Description |
+| :--- | :--- | :--- |
+| `name` | `string` | Site name (appears in title and meta tags). |
+| `description` | `string` | Default site description for SEO. |
+| `url` | `string` | Base URL for canonical URLs and OG tags. |
+| `version` | `string` | Documentation version (optional). |
 
 ## `navigation`
 
@@ -56,5 +65,65 @@ The root object takes the following properties:
 "theme": {
   "primaryColor": "#6366f1",
   "accentColor": "#22d3ee"
+}
+```
+
+## `seo`
+
+Configure SEO defaults for your documentation site.
+
+```json
+"seo": {
+  "ogImage": "/og-image.png",
+  "twitterHandle": "@yourhandle",
+  "twitterSite": "@sitehandle",
+  "defaultAuthor": "Your Name",
+  "defaultKeywords": ["docs", "api", "documentation"],
+  "enableJsonLd": true,
+  "organizationName": "Your Organization",
+  "organizationLogo": "/logo.png",
+  "articleType": "TechArticle",
+  "autoCanonical": true,
+  "enableBreadcrumbs": true
+}
+```
+
+| Property | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `ogImage` | `string` | `/og-image.png` | Default Open Graph image for social sharing. |
+| `twitterHandle` | `string` | - | Twitter handle for `twitter:creator` meta tag. |
+| `twitterSite` | `string` | - | Twitter site handle (defaults to `twitterHandle`). |
+| `defaultAuthor` | `string` | - | Default author name for article metadata. |
+| `defaultKeywords` | `string[]` | - | Default keywords applied to all pages. |
+| `enableJsonLd` | `boolean` | `true` | Enable JSON-LD structured data. |
+| `organizationName` | `string` | - | Organization name for JSON-LD publisher info. |
+| `organizationLogo` | `string` | - | Organization logo URL for JSON-LD. |
+| `articleType` | `string` | `TechArticle` | JSON-LD article type (`TechArticle` or `Article`). |
+| `autoCanonical` | `boolean` | `true` | Automatically generate canonical URLs. |
+| `enableBreadcrumbs` | `boolean` | `true` | Enable breadcrumb JSON-LD structured data. |
+
+## `landing`
+
+Configure an optional landing page for your docs site.
+
+```json
+"landing": {
+  "enabled": true,
+  "hero": {
+    "title": "Your Product",
+    "subtitle": "A brief description",
+    "version": "v2.0",
+    "cta": [
+      { "label": "Get Started", "href": "/docs", "variant": "primary" },
+      { "label": "GitHub", "href": "https://github.com", "variant": "secondary" }
+    ]
+  },
+  "features": [
+    {
+      "title": "Feature Name",
+      "description": "Feature description",
+      "icon": "rocket"
+    }
+  ]
 }
 ```
