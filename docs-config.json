@@ -1,7 +1,8 @@
 {
   "metadata": {
     "name": "SuperDocs Demo",
-    "description": "A comprehensive demo of SuperDocs - the open-source Mintlify alternative"
+    "description": "A comprehensive demo of SuperDocs - the open-source Mintlify alternative",
+    "version": "0.3.0"
   },
   "branding": {
     "favicon": "/favicon.svg",
@@ -16,19 +17,9 @@
   },
   "navigation": {
     "navbar": {
-      "links": [
-        {
-          "label": "Documentation",
-          "href": "/"
-        },
-        {
-          "label": "GitHub",
-          "href": "https://github.com/superdocs"
-        }
-      ],
       "cta": {
         "label": "Get Started",
-        "href": "/getting-started/installation"
+        "href": "/introduction"
       }
     },
     "sidebar": [
@@ -207,18 +198,18 @@
   "landing": {
     "enabled": true,
     "hero": {
-      "version": "v2.0 is now available",
+      "version": "v0.3.0 is now available",
       "title": "SuperDocs <br/> <span class='text-primary'>Generated Landing</span>",
       "subtitle": "This landing page is entirely defined in docs-config.json. No coding required.",
       "cta": [
         {
           "label": "Read the Docs",
-          "href": "/getting-started/installation",
+          "href": "/introduction",
           "variant": "primary"
         },
         {
           "label": "GitHub",
-          "href": "https://github.com",
+          "href": "https://github.com/devrohit06/superdocs",
           "variant": "secondary"
         }
       ]

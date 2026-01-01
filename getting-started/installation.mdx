@@ -5,50 +5,73 @@ description: How to install and set up SuperDocs.
 
 # Installation
 
-Getting started with SuperDocs is straightforward. You can run it directly via `npx` or install it as a dependency in your project.
+Getting started with SuperDocs is straightforward and fast. Whether you want to try it out immediately or integrate it into your project, we've got you covered.
 
 ## Prerequisites
 
-- **Node.js**: Version 18.0.0 or higher.
-- **npm**, **yarn**, or **pnpm**.
+- **Node.js**: Version 18.0.0 or higher
+- **npm**, **yarn**, or **pnpm** package manager
 
-## Method 1: The Quickest Way (npx)
+## Installation Methods
 
-If you just want to spin up a docs site from an existing folder of markdown files:
+### Global Installation
+
+Install SuperDocs globally to use it across multiple projects:
 
 ```bash
-npx superdocs dev -i ./my-docs-folder
+npm install -g @devrohit06/superdocs
+# or
+pnpm add -g @devrohit06/superdocs
+```
+
+Then use it anywhere:
+
+```bash
+superdocs build -i ./my-docs -o ./dist
+superdocs dev -i ./my-docs
+```
+
+### Method 1: The Quickest Way (npx)
+
+If you just want to spin up a docs site from an existing folder of markdown files without installing anything:
+
+```bash
+npx @devrohit06/superdocs dev -i ./my-docs-folder
 ```
 
 This command will:
-1.  Scaffold a temporary Astro project.
-2.  Copy your docs into it.
-3.  Start a local development server at `http://localhost:3000`.
 
-## Method 2: Adding to an existing project
+1. Scaffold a temporary Astro project
+2. Copy your docs into it
+3. Start a local development server at `http://localhost:4321`
+
+### Method 2: Adding to an Existing Project
 
 If you want to keep your docs versioned with your code:
 
-1.  Create a `docs` folder in your repo.
-2.  Add a `docs-config.json` file inside it.
-3.  Add some `.md` or `.mdx` files.
-4.  Run from your root:
+1. Create a `docs` folder in your repository
+2. Add a `docs-config.json` file inside it
+3. Add Markdown or MDX files
+4. Run from your root:
 
 ```bash
-npx superdocs dev -i ./docs
+npx @devrohit06/superdocs dev -i ./docs
 ```
 
-## Method 3: Scaffold a new Docs Site
+### Method 3: Using a Custom Template
 
-To create a brand new SuperDocs project:
+You can use custom templates from GitHub or local paths:
 
 ```bash
-npx superdocs create my-new-docs
-cd my-new-docs
-npm install
-npm run dev
+npx @devrohit06/superdocs dev -i ./docs -t github:owner/template-repo
+# or
+npx @devrohit06/superdocs dev -i ./docs -t ./path/to/local/template
 ```
 
-## CLI Reference
+## Next Steps
 
-See the [CLI Commands](/reference/cli-commands) page for a full list of available flags and options.
+After installation, explore these resources:
+
+- [Quick Start](/getting-started/quick-start) - Get up and running in 5 minutes
+- [Project Structure](/getting-started/project-structure) - Understand the file organization
+- [CLI Commands](/reference/cli-commands) - Full reference for all available commands and flags

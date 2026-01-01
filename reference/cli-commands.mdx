@@ -5,40 +5,116 @@ description: Reference for the SuperDocs CLI.
 
 # CLI Commands
 
-The SuperDocs CLI allows you to develop, build, and manage your documentation site.
-
-## `dev`
-
-Starts a local development server with hot reloading.
-
-```bash
-npx superdocs dev [options]
-```
-
-| Option | Alias | Description | Default |
-| :--- | :--- | :--- | :--- |
-| `--input` | `-i` | Input directory containing docs | `.` |
-| `--port` | `-p` | Port to run the server on | `3000` |
+The SuperDocs CLI provides powerful commands to develop, build, and manage your documentation site. All commands support detailed options for customization.
 
 ## `build`
 
-Builds the documentation for production.
+Builds your documentation site for production deployment.
 
 ```bash
-npx superdocs build [options]
+superdocs build --input ./my-docs --output ./dist [options]
 ```
 
-| Option | Alias | Description | Default |
-| :--- | :--- | :--- | :--- |
-| `--input` | `-i` | Input directory containing docs | `.` |
-| `--output` | `-o` | Output directory for static files | `dist` |
+### Options
 
-## `create`
+| Option       | Alias | Type     | Description                                                    | Default   |
+| :----------- | :---- | :------- | :------------------------------------------------------------- | :-------- |
+| `--input`    | `-i`  | `<path>` | **Required.** Path to your docs folder                         | —         |
+| `--output`   | `-o`  | `<path>` | Output directory for the built site                            | `./dist`  |
+| `--template` | `-t`  | `<name>` | Template to use: `default`, `github:owner/repo`, or local path | `default` |
+| `--base-url` | `-b`  | `<url>`  | Base URL for the site (useful for subpath deployments)         | `/`       |
+| `--search`   | —     | flag     | Enable search functionality                                    | `false`   |
+| `--refresh`  | —     | flag     | Force re-download template from GitHub, bypassing cache        | `false`   |
 
-Scaffolds a new SuperDocs project.
+### Example
 
 ```bash
-npx superdocs create <project-name>
+superdocs build -i ./docs -o ./build --template default --base-url /docs/ --search
 ```
 
-Accepts the name of the directory to create. If not provided, it will prompt for one.
+## `dev`
+
+Starts a local development server with hot module reloading. Perfect for editing and previewing changes in real-time.
+
+```bash
+superdocs dev --input ./my-docs [options]
+```
+
+### Options
+
+| Option       | Alias | Type       | Description                                                    | Default   |
+| :----------- | :---- | :--------- | :------------------------------------------------------------- | :-------- |
+| `--input`    | `-i`  | `<path>`   | **Required.** Path to your docs folder                         | —         |
+| `--template` | `-t`  | `<name>`   | Template to use: `default`, `github:owner/repo`, or local path | `default` |
+| `--base-url` | `-b`  | `<url>`    | Base URL for the site                                          | `/`       |
+| `--port`     | `-p`  | `<number>` | Port for the development server                                | `4321`    |
+| `--search`   | —     | flag       | Enable search functionality                                    | `false`   |
+| `--refresh`  | —     | flag       | Force re-download template from GitHub, bypassing cache        | `false`   |
+
+### Example
+
+```bash
+superdocs dev -i ./docs -p 5000 --template default
+```
+
+## `eject`
+
+Exports the complete Astro project source code. Use this when you need full control over the project and want to customize beyond what SuperDocs configuration allows.
+
+```bash
+superdocs eject --input ./my-docs --output ./astro-docs-project [options]
+```
+
+### Options
+
+| Option       | Alias | Type     | Description                                                    | Default                |
+| :----------- | :---- | :------- | :------------------------------------------------------------- | :--------------------- |
+| `--input`    | `-i`  | `<path>` | **Required.** Path to your docs folder                         | —                      |
+| `--output`   | `-o`  | `<path>` | Output directory for the Astro project                         | `./astro-docs-project` |
+| `--template` | `-t`  | `<name>` | Template to use: `default`, `github:owner/repo`, or local path | `default`              |
+| `--base-url` | `-b`  | `<url>`  | Base URL for the site                                          | `/`                    |
+| `--search`   | —     | flag     | Enable search functionality                                    | `false`                |
+| `--refresh`  | —     | flag     | Force re-download template from GitHub, bypassing cache        | `false`                |
+
+### Example
+
+```bash
+superdocs eject -i ./docs -o ./my-astro-project --refresh
+```
+
+Once ejected, you have a full Astro project and can use all standard Astro commands:
+
+```bash
+cd my-astro-project
+npm install
+npm run dev
+npm run build
+```
+
+## `template list`
+
+Lists all available SuperDocs templates.
+
+```bash
+superdocs template list
+```
+
+## `template cache`
+
+Manages the template cache.
+
+```bash
+superdocs template cache [options]
+```
+
+### Options
+
+| Option    | Description                                      |
+| :-------- | :----------------------------------------------- |
+| `--clear` | Clear all cached templates to free up disk space |
+
+### Example
+
+```bash
+superdocs template cache --clear
+```

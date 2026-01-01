@@ -5,23 +5,50 @@ description: How SuperDocs works under the hood.
 
 # Architecture
 
-SuperDocs is essentially a wrapper around [Astro](https://astro.build). It abstracts away the boilerplate of setting up an Astro project, configuring MDX, tailwind, and other integrations, while exposing a clean configuration surface.
+SuperDocs is a command-line tool that simplifies creating beautiful documentation sites. It acts as a wrapper around [Astro](https://astro.build), abstracting away boilerplate configuration for Astro projects, MDX integration, Tailwind CSS, and other dependencies, while providing a clean, simple configuration surface.
+
+## System Architecture
+
+```mermaid
+graph TD
+    A[User Command] -->|superdocs dev/build| B[CLI Parser]
+    B -->|Parse options| C[Config Loader]
+    C -->|Load docs-config.json| D[Validation]
+    D -->|Validate schema| E{Valid?}
+    E -->|No| F[Error]
+    E -->|Yes| G[Template Fetcher]
+    G -->|Fetch/Cache template| H[Scaffolding]
+    H -->|Create .superdocs dir| I[Content Injection]
+    I -->|Copy markdown files| J[Config Injection]
+    J -->|Inject config| K[Astro Build]
+    K -->|astro build/dev| L[Output]
+    L -->|Copy to dist| M[Documentation Site]
+```
 
 ## The Build Process
 
-When you run a command like `superdocs build`, the following happens:
+When you run a command like `superdocs build -i ./docs -o ./dist`, the following sequence occurs:
 
-1.  **Validation**: The CLI validates your `docs-config.json` against a schema.
-2.  **Scaffolding**: A temporary `.superdocs` directory is created. It contains the core Astro templates (layouts, components).
-3.  **Content Injection**: Your markdown files are copied into the `.superdocs/src/content/docs` directory.
-4.  **Config Injection**: Your `docs-config.json` is parsed and injected into the build context.
-5.  **Astro Build**: The CLI runs `astro build` inside the `.superdocs` directory.
-6.  **Output**: The resulting static files are copied to your specified output directory (default: `dist`).
+1. **Command Parsing**: The CLI parses your command and options using Commander.js
+2. **Validation**: Your `docs-config.json` is validated against a Zod schema
+3. **Template Resolution**: SuperDocs resolves the template (default, GitHub URL, or local path)
+4. **Scaffolding**: A temporary `.superdocs` directory is created containing:
+   - Core Astro configuration
+   - Layout components
+   - UI components
+   - Style definitions
+5. **Content Injection**: Your markdown/MDX files are copied to `.superdocs/src/content/docs`
+6. **Config Injection**: Your configuration is parsed and injected into the build context
+7. **Astro Build**: The CLI runs `astro build` inside the temporary directory
+8. **Output Generation**: Static files are optimized and copied to your output directory (default: `dist`)
+9. **Cleanup**: Temporary files are cleaned up after build completion
 
 ## Why Astro?
 
-We chose Astro because:
+We chose Astro for SuperDocs because:
 
-- **Content Collections**: Astro's content collections API is perfect for managing documentation pages.
-- **Islands Architecture**: We can hydrate interactive components (like search or tabs) while keeping the rest of the page static HTML.
-- **Performance**: Astro builds zero-JS by default, ensuring your docs are blazing fast.
+- **Content Collections API**: Perfect for managing and organizing documentation pages with built-in validation
+- **Islands Architecture**: Enables selective hydration of interactive components (search, tabs, etc.) while keeping most of the page as static HTML
+- **Zero-JS by Default**: Astro generates minimal JavaScript, ensuring blazing-fast load times and exceptional performance
+- **MDX Support**: Native support for mixing Markdown with React components
+- **Static Generation**: Creates truly static sites that can be deployed anywhere with minimal overhead
