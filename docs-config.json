@@ -2,7 +2,7 @@
   "metadata": {
     "name": "SuperDocs Demo",
     "description": "A comprehensive demo of SuperDocs - the open-source Mintlify alternative",
-    "version": "0.3.0"
+    "version": "0.3.5"
   },
   "branding": {
     "favicon": "/favicon.svg",
