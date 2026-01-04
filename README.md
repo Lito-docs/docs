@@ -1,10 +1,10 @@
-# SuperDocs Demo
+# Lito Demo
 
-A comprehensive demo of SuperDocs - the open-source Mintlify alternative.
+A comprehensive demo of Lito - Beautiful documentation sites from Markdown.
 
 ## Overview
 
-This repository contains a sample documentation site built with [SuperDocs](https://github.com/superdocsai/superdocs), showcasing its features and capabilities.
+This repository contains a sample documentation site built with [Lito](https://github.com/Lito-docs/cli), showcasing its features and capabilities.
 
 ## Features
 
@@ -27,7 +27,7 @@ This repository contains a sample documentation site built with [SuperDocs](http
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/devrohit06/superdocs-demo.git
+   git clone https://github.com/Lito-docs/docs.git
    cd sample-demo
    ```
 
@@ -40,7 +40,7 @@ This repository contains a sample documentation site built with [SuperDocs](http
 3. Start the development server:
 
    ```bash
-   npx --yes @devrohit06/superdocs dev -i .
+   npx --yes @litodocs/cli dev -i .
    ```
 
 4. Open [http://localhost:4321](http://localhost:4321) in your browser.
@@ -51,7 +51,7 @@ You can customize your documentation on-the-fly using CLI options:
 
 ```bash
 # Custom branding and colors
-npx --yes @devrohit06/superdocs dev -i . \
+npx --yes @litodocs/cli dev -i . \
   --name "My Custom Docs" \
   --description "Custom documentation site" \
   --primary-color "#0066CC" \
@@ -73,48 +73,44 @@ npx --yes @devrohit06/superdocs dev -i . \
 To create a production build:
 
 ```bash
-npx --yes @devrohit06/superdocs build -i .
+npx --yes @litodocs/cli build -i .
 ```
 
-With custom configuration:
+Optimize for your hosting provider:
 
 ```bash
-npx --yes @devrohit06/superdocs build -i . \
-  --name "Production Docs" \
-  --primary-color "#FF5733" \
-  --accent-color "#33FF57"
-```
+# Vercel
+npx --yes @litodocs/cli build -i . --provider vercel
 
-This generates a `dist` folder with static files.
+# Netlify
+npx --yes @litodocs/cli build -i . --provider netlify
+
+# Cloudflare (SSR)
+npx --yes @litodocs/cli build -i . --provider cloudflare --rendering server
+```
 
 ## Deployment
 
-This project supports multiple deployment options:
+Lito simplifies deployment with provider-specific optimizations.
 
 ### GitHub Pages (Automated)
 
 The project is automatically deployed to GitHub Pages using GitHub Actions when pushing to the `main` branch.
 
-**Setup**: Go to your repository Settings > Pages, and set the source to "GitHub Actions".
+### Vercel, Netlify, & Cloudflare
 
-### Vercel
+Use the `--provider` flag during build to automatically generate the necessary configuration files (`vercel.json`, `netlify.toml`) and install required adapters.
 
-1. Import the repository in Vercel
-2. Vercel will automatically detect the `vercel.json` configuration
-3. Deploy!
-
-### Netlify
-
-1. Connect the repository in Netlify
-2. Netlify will automatically detect the `netlify.toml` configuration
-3. Deploy!
+```bash
+npx --yes @litodocs/cli build -i . --provider <provider_name>
+```
 
 ### Manual Deployment
 
 For other platforms, use:
 
 ```bash
-npx --yes @devrohit06/superdocs build -i .
+npx --yes @litodocs/cli build -i .
 ```
 
 Then deploy the `dist` folder to your hosting provider.
