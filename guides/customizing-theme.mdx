@@ -1,27 +1,37 @@
 ---
 title: Customizing Theme
-description: How to customize the look and feel of your SuperDocs site.
+description: How to customize the look and feel of your Lito site with custom CSS and assets.
 ---
 
 # Customizing Theme
 
-SuperDocs allows you to easily customize the appearance of your documentation site to match your brand.
+Lito allows you to easily customize the appearance of your documentation site to match your brand.
 
 ## Basic Colors
 
-The easiest way to change the theme is by modifying the `theme` object in your `docs-config.json`.
+The easiest way to change the theme is by modifying the `branding.colors` object in your `docs-config.json`.
 
 ```json
 {
-  "theme": {
-    "primaryColor": "#6366f1",
-    "accentColor": "#22d3ee"
+  "branding": {
+    "colors": {
+      "primary": "#6366f1",
+      "secondary": "#4f46e5",
+      "accent": "#22d3ee",
+      "background": "#ffffff",
+      "text": "#1f2937"
+    }
   }
 }
 ```
 
-- **primaryColor**: The main brand color (links, buttons).
-- **accentColor**: Used for highlights and gradients.
+| Property | Description |
+|----------|-------------|
+| `primary` | Main brand color used for links, buttons, and highlights |
+| `secondary` | Secondary color for gradients and accents |
+| `accent` | Used for special highlights and call-to-action elements |
+| `background` | Base background color of the site |
+| `text` | Default text color |
 
 ## Logo and Favicon
 
@@ -39,6 +49,277 @@ You can update your logo and favicon in the `branding` section:
 }
 ```
 
-Ensure your `logo.svg` and `favicon.svg` files are placed in the `public` directory of your docs folder (or if using a simple folder structure, just in the root alongside `docs-config.json`, though `public` folder support is idiomatic Astro).
+Place your logo and favicon files in either:
+- The `public/` folder in your docs directory
+- The `_assets/` folder (will be available at `/assets/`)
 
-*Note: For the current version, place static assets in the root folder and reference them relative to root.*
+---
+
+## Assets
+
+Lito supports special folders for organizing your static assets. These folders are automatically synced to your built site.
+
+### Folder Structure
+
+```text
+my-docs/
+├── docs-config.json
+├── _assets/          # Static files → /assets/
+├── _images/          # Images → /images/
+├── _css/             # Custom stylesheets
+├── public/           # Root static files → /
+└── ...
+```
+
+### `_assets/` - Static Files
+
+Place any static files (PDFs, downloads, etc.) in the `_assets/` folder. They will be available at `/assets/` in your built site.
+
+```text
+_assets/
+├── brand-guidelines.pdf
+├── logo-pack.zip
+└── presentation.pptx
+```
+
+Reference in your markdown:
+
+```md
+Download our [Brand Guidelines](/assets/brand-guidelines.pdf).
+```
+
+### `_images/` - Images
+
+Store images in the `_images/` folder. They will be available at `/images/` in your built site.
+
+```text
+_images/
+├── hero-banner.png
+├── screenshots/
+│   ├── dashboard.png
+│   └── settings.png
+└── diagrams/
+    └── architecture.svg
+```
+
+Reference in your markdown:
+
+```md
+![Dashboard Screenshot](/images/screenshots/dashboard.png)
+```
+
+### `public/` - Root Static Files
+
+Files in the `public/` folder are copied to the root of your site. Use this for:
+- Favicon files
+- Logos
+- `robots.txt`
+- OpenGraph images
+- Any file that needs to be at the root URL
+
+```text
+public/
+├── favicon.svg
+├── logo.svg
+├── og-image.png
+└── robots.txt
+```
+
+### Configuration
+
+You can customize asset folder names in `docs-config.json`:
+
+```json
+{
+  "assets": {
+    "images": "_images",
+    "css": "_css",
+    "static": "_assets"
+  }
+}
+```
+
+---
+
+## Custom CSS
+
+Lito allows you to add custom CSS to override or extend the default theme styles.
+
+### Adding Custom Styles
+
+Create a `_css/` folder in your docs directory and add a `custom.css` file:
+
+```text
+my-docs/
+├── docs-config.json
+├── _css/
+│   └── custom.css
+└── ...
+```
+
+Your custom styles will be automatically imported and applied to your site.
+
+### Example: Custom Styles
+
+```css
+/* _css/custom.css */
+
+/* Custom font */
+:root {
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+/* Custom link color */
+.docs-prose a {
+  color: #2563eb;
+}
+
+/* Custom code block styling */
+.docs-prose pre {
+  border-radius: 12px;
+  border: 2px solid var(--primary-200);
+}
+
+/* Custom button style */
+.cta-button {
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+}
+```
+
+### Theme Overrides
+
+For more extensive theme changes, create a `theme.css` file:
+
+```css
+/* _css/theme.css */
+
+/* Override primary color palette */
+:root {
+  --primary-50: #faf5ff;
+  --primary-100: #f3e8ff;
+  --primary-200: #e9d5ff;
+  --primary-300: #d8b4fe;
+  --primary-400: #c084fc;
+  --primary-500: #a855f7;
+  --primary-600: #9333ea;
+  --primary-700: #7e22ce;
+  --primary-800: #6b21a8;
+  --primary-900: #581c87;
+  --primary-950: #3b0764;
+}
+
+/* Override gray palette */
+:root {
+  --gray-50: #fafafa;
+  --gray-100: #f4f4f5;
+  --gray-200: #e4e4e7;
+  --gray-300: #d4d4d8;
+  --gray-400: #a1a1aa;
+  --gray-500: #71717a;
+  --gray-600: #52525b;
+  --gray-700: #3f3f46;
+  --gray-800: #27272a;
+  --gray-900: #18181b;
+  --gray-950: #09090b;
+}
+```
+
+### Available CSS Variables
+
+Lito uses CSS custom properties (variables) for theming. Here are the main variables you can override:
+
+#### Colors
+
+| Variable | Description |
+|----------|-------------|
+| `--primary-50` to `--primary-950` | Primary color palette (10 shades) |
+| `--gray-50` to `--gray-950` | Gray/neutral palette (10 shades) |
+| `--success` | Success state color |
+| `--warning` | Warning state color |
+| `--danger` | Error/danger state color |
+| `--info` | Info state color |
+| `--note` | Note callout color |
+
+#### Typography
+
+| Variable | Description |
+|----------|-------------|
+| `--font-sans` | Primary font family |
+| `--font-mono` | Monospace font for code |
+
+#### Layout
+
+| Variable | Description |
+|----------|-------------|
+| `--sidebar-width` | Width of the sidebar |
+| `--toc-width` | Width of table of contents |
+| `--header-height` | Height of the top header |
+
+### Multiple CSS Files
+
+You can add multiple CSS files to the `_css/` folder. All `.css` files will be copied to the build:
+
+```text
+_css/
+├── custom.css      # Main custom styles (auto-imported)
+├── theme.css       # Theme overrides (auto-imported)
+├── components.css  # Additional component styles
+└── utilities.css   # Custom utility classes
+```
+
+<Alert variant="info">
+  Only `custom.css` and `theme.css` are automatically imported. For additional CSS files, you'll need to import them manually in `custom.css`:
+
+  ```css
+  /* custom.css */
+  @import "./components.css";
+  @import "./utilities.css";
+  ```
+</Alert>
+
+### Dark Mode
+
+Lito includes built-in dark mode support. Your custom styles should account for both themes:
+
+```css
+/* Light mode styles (default) */
+.my-component {
+  background: white;
+  color: #1f2937;
+}
+
+/* Dark mode styles */
+.dark .my-component {
+  background: #1f2937;
+  color: white;
+}
+
+/* Or use CSS variables for automatic theming */
+.my-component {
+  background: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}
+```
+
+---
+
+## Best Practices
+
+<Steps>
+  <Step title="Use CSS Variables">
+    Always use the theme's CSS variables instead of hardcoded colors. This ensures your customizations work with both light and dark modes.
+  </Step>
+
+  <Step title="Keep Specificity Low">
+    Avoid overly specific selectors. The default theme uses low specificity, so your overrides should work without `!important`.
+  </Step>
+
+  <Step title="Test Both Themes">
+    Always test your custom styles in both light and dark mode to ensure a consistent experience.
+  </Step>
+
+  <Step title="Organize Your CSS">
+    For larger customizations, split your CSS into multiple files and use `@import` to keep things organized.
+  </Step>
+</Steps>

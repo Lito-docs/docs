@@ -1,0 +1,35 @@
+---
+title: Analytics
+description: Add analytics to your documentation site
+---
+
+# Analytics
+
+Lito supports Google Analytics 4 (GA4) out of the box with zero performance impact.
+
+## Google Analytics 4
+
+Lito uses [Partytown](https://partytown.builder.io/) to run Google Analytics in a web worker, ensuring your site remains fast and responsive.
+
+To enable it, add the `integrations.analytics` section to your `docs-config.json`:
+
+```json
+{
+  "integrations": {
+    "analytics": {
+      "provider": "google-analytics",
+      "measurementId": "G-XXXXXXXXXX"
+    }
+  }
+}
+```
+
+Replace `G-XXXXXXXXXX` with your actual Google Analytics Measurement ID.
+
+## Performance
+
+By running analytics scripts off the main thread, Lito ensures:
+
+- **Perfect Lighthouse Scores**: Analytics scripts don't block the main thread.
+- **Fast Interactions**: UI remains responsive while analytics load.
+- **Privacy**: Scripts are sandboxed in the web worker.

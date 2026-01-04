@@ -1,27 +1,42 @@
 ---
 title: Deployment
-description: How to deploy your SuperDocs site to production.
+description: How to deploy your Lito site to production.
 ---
 
 # Deployment
 
-Since SuperDocs generates a static site, you can deploy it to any static hosting provider.
+Since Lito generates a static site, you can deploy it to any static hosting provider.
 
 ## Building for Production
 
 To create a production build, run:
 
 ```bash
-npx superdocs build -i ./my-docs
+npx @litodocs/cli build -i ./my-docs
 ```
 
 This will generate a `dist` folder containing your static HTML, CSS, and JS files.
+
+## Provider Optimizations
+
+Lito includes built-in optimizations for major hosting providers. Use the `--provider` flag to automatically generate configuration files and install necessary adapters.
+
+```bash
+# Vercel (generates vercel.json)
+npx @litodocs/cli build -i ./docs --provider vercel
+
+# Netlify (generates netlify.toml)
+npx @litodocs/cli build -i ./docs --provider netlify
+
+# Cloudflare (SSR support)
+npx @litodocs/cli build -i ./docs --provider cloudflare --rendering server
+```
 
 ## Vercel
 
 1.  Push your code to a Git repository.
 2.  Import the project into Vercel.
-3.  Set the **Build Command** to: `npx superdocs build -i ./docs` (adjust `./docs` to your folder).
+3.  Set the **Build Command** to: `npx @litodocs/cli build -i ./docs --provider vercel`.
 4.  Set the **Output Directory** to: `dist`.
 5.  Deploy!
 
@@ -29,9 +44,17 @@ This will generate a `dist` folder containing your static HTML, CSS, and JS file
 
 1.  Push your code to a Git repository.
 2.  New site from Git.
-3.  **Build command**: `npx superdocs build -i ./docs`.
+3.  **Build command**: `npx @litodocs/cli build -i ./docs --provider netlify`.
 4.  **Publish directory**: `dist`.
 5.  Deploy site.
+
+## Cloudflare Pages
+
+1.  Push your code to a Git repository.
+2.  Create a new Pages project.
+3.  **Build command**: `npx @litodocs/cli build -i ./docs --provider cloudflare --rendering server`.
+4.  **Build output directory**: `dist`.
+5.  Deploy!
 
 ## GitHub Pages
 
@@ -51,7 +74,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
             node-version: 18
-      - run: npx superdocs build -i ./docs
+      - run: npx @litodocs/cli build -i ./docs
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
