@@ -1,19 +1,22 @@
 {
   "metadata": {
-    "name": "SuperDocs Demo",
-    "description": "A comprehensive demo of SuperDocs - the open-source Mintlify alternative",
-    "version": "0.3.5"
+    "name": "Lito docs",
+    "description": "A comprehensive demo of Lito - the open-source Mintlify alternative",
+    "version": "0.4.0"
   },
   "branding": {
-    "favicon": "/favicon.svg",
+    "favicon": "/fire-favicon.svg",
     "logo": {
       "src": "/logo.svg",
       "href": "/"
+    },
+    "colors": {
+      "primary": "#f97316",
+      "secondary": "#ea580c",
+      "accent": "#fbbf24",
+      "background": "#fffbeb",
+      "text": "#7c2d12"
     }
-  },
-  "theme": {
-    "primaryColor": "#6366f1",
-    "accentColor": "#22d3ee"
   },
   "navigation": {
     "navbar": {
@@ -31,8 +34,13 @@
             "href": "/introduction"
           },
           {
-            "label": "What is SuperDocs?",
-            "href": "/introduction/what-is-superdocs"
+            "label": "What is Lito?",
+            "href": "/introduction/what-is-lito"
+          },
+          {
+            "label": "Changelog",
+            "href": "/changelog",
+            "icon": "lucide:history"
           }
         ]
       },
@@ -85,6 +93,10 @@
             "label": "SEO & Meta Tags",
             "href": "/guides/seo",
             "icon": "lucide:search"
+          },
+          {
+            "label": "Analytics",
+            "href": "/guides/analytics"
           },
           {
             "label": "Deployment",
@@ -182,24 +194,68 @@
           }
         ]
       }
+    ],
+    "sidebar.es": [
+      {
+        "label": "Introducción",
+        "items": [
+          {
+            "label": "Bienvenido",
+            "href": "/introduction"
+          }
+        ]
+      },
+      {
+        "label": "Primeros Pasos",
+        "items": [
+          {
+            "label": "Instalación",
+            "href": "/getting-started/installation"
+          },
+          {
+            "label": "Inicio Rápido",
+            "href": "/getting-started/quick-start"
+          }
+        ]
+      }
     ]
   },
   "seo": {
     "ogImage": "/og-image.png",
-    "twitterHandle": "@superdocs",
-    "defaultAuthor": "SuperDocs Team",
-    "defaultKeywords": ["documentation", "superdocs", "astro", "markdown"],
+    "twitterHandle": "@litodocs",
+    "defaultAuthor": "Lito Team",
+    "defaultKeywords": ["documentation", "lito", "astro", "markdown"],
     "enableJsonLd": true,
-    "organizationName": "SuperDocs",
+    "organizationName": "Lito",
     "articleType": "TechArticle",
     "autoCanonical": true,
     "enableBreadcrumbs": true
+  },
+  "i18n": {
+    "defaultLocale": "en",
+    "locales": ["en", "es", "fr", "de"],
+    "routing": {
+      "prefixDefaultLocale": false
+    },
+    "translations": {
+      "es": {
+        "search.placeholder": "Buscar en la documentación..."
+      },
+      "fr": {
+        "search.placeholder": "Rechercher dans la documentation..."
+      }
+    }
+  },
+  "assets": {
+    "images": "_images",
+    "css": "_css",
+    "static": "_assets"
   },
   "landing": {
     "enabled": false,
     "hero": {
       "version": "v0.3.0 is now available",
-      "title": "SuperDocs <br/> <span class='text-primary'>Generated Landing</span>",
+      "title": "Lito <br/> <span class='text-primary'>Generated Landing</span>",
       "subtitle": "This landing page is entirely defined in docs-config.json. No coding required.",
       "cta": [
         {
@@ -209,7 +265,7 @@
         },
         {
           "label": "GitHub",
-          "href": "https://github.com/devrohit06/superdocs",
+          "href": "https://github.com/devrohit06/lito",
           "variant": "secondary"
         }
       ]
