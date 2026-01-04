@@ -1,34 +1,253 @@
 ---
 title: Theming
-description: How theming and design tokens work in SuperDocs.
+description: How theming and design tokens work in Lito.
 ---
 
 # Theming
 
-SuperDocs uses a CSS Variable based theming system, powered by Tailwind CSS.
+Lito uses a modern CSS Variable-based theming system with OKLCH color space for perceptually uniform colors.
 
 ## Color System
 
-We define two main semantic colors in `docs-config.json`:
+Lito uses a comprehensive color palette system defined through CSS custom properties. Colors are configured in `docs-config.json`:
 
-1.  **Primary**: Used for links, active states, and primary buttons.
-2.  **Accent**: Used for highlights and secondary elements.
-
-These values are converted into CSS variables (H, S, L components) at runtime and injected into the page root.
-
-```css
-:root {
-  --color-primary: 99 102 241; /* #6366f1 converted to RGB/HSL channels */
-  --color-accent: 34 211 238;
+```json
+{
+  "branding": {
+    "colors": {
+      "primary": "#f97316",
+      "secondary": "#ea580c",
+      "accent": "#fbbf24",
+      "background": "#fffbeb",
+      "text": "#7c2d12"
+    }
+  }
 }
 ```
 
-This allows us to support opacity modifiers in Tailwind (e.g., `bg-primary/50`).
+### Color Palettes
+
+Each color is expanded into a 10-shade palette for flexibility:
+
+| Shade | Usage |
+|-------|-------|
+| `50` | Lightest - subtle backgrounds |
+| `100-200` | Light backgrounds, borders |
+| `300-400` | Hover states, secondary elements |
+| `500` | Base color - primary usage |
+| `600-700` | Darker variants, active states |
+| `800-900` | Dark backgrounds, emphasis |
+| `950` | Darkest - high contrast |
+
+### Semantic Colors
+
+In addition to the primary palette, Lito includes semantic colors for UI feedback:
+
+| Variable | Purpose |
+|----------|---------|
+| `--success` | Success states, confirmations |
+| `--warning` | Warnings, cautions |
+| `--danger` | Errors, destructive actions |
+| `--info` | Informational highlights |
+| `--note` | Notes and callouts |
+
+These are used by MDX components like `<Alert>` to provide consistent visual feedback.
+
+---
 
 ## Dark Mode
 
-Dark mode is supported out of the box. SuperDocs respects the user's system preference and persists manual overrides in `localStorage`.
+Dark mode is fully supported out of the box. Lito:
+
+1. **Respects system preference** - Automatically detects `prefers-color-scheme`
+2. **Persists user choice** - Saves manual toggle to `localStorage`
+3. **Smooth transitions** - Theme changes animate smoothly
+
+### How It Works
+
+The theme toggle adds a `.dark` class to the `<html>` element. All theme-aware styles use this class:
+
+```css
+/* Light mode (default) */
+:root {
+  --background: oklch(99% 0.005 90);
+  --foreground: oklch(20% 0.02 90);
+}
+
+/* Dark mode */
+.dark {
+  --background: oklch(15% 0.015 90);
+  --foreground: oklch(95% 0.01 90);
+}
+```
+
+### Writing Theme-Aware Styles
+
+Always use CSS variables for colors to ensure dark mode compatibility:
+
+```css
+/* Good - uses theme variables */
+.my-card {
+  background: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+}
+
+/* Avoid - hardcoded colors break in dark mode */
+.my-card {
+  background: white;
+  color: #1f2937;
+}
+```
+
+---
+
+## Typography
+
+Lito uses a clean, modern typography system:
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `--font-sans` | Inter | Primary font for UI and content |
+| `--font-mono` | Fira Code | Monospace font for code blocks |
+
+### Font Loading
+
+Fonts are loaded as variable fonts for optimal performance and flexibility:
+
+```css
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+```
+
+---
+
+## Design Tokens
+
+Lito uses a comprehensive set of design tokens as CSS variables:
+
+### Surface Colors
+
+| Token | Description |
+|-------|-------------|
+| `--background` | Page background |
+| `--foreground` | Primary text color |
+| `--card` | Card/panel backgrounds |
+| `--card-foreground` | Card text color |
+| `--popover` | Popover/dropdown backgrounds |
+| `--popover-foreground` | Popover text color |
+| `--muted` | Muted/subtle backgrounds |
+| `--muted-foreground` | Secondary text color |
+
+### Interactive Colors
+
+| Token | Description |
+|-------|-------------|
+| `--primary` | Primary brand color |
+| `--primary-foreground` | Text on primary backgrounds |
+| `--accent` | Accent/highlight color |
+| `--accent-foreground` | Text on accent backgrounds |
+
+### Utility Colors
+
+| Token | Description |
+|-------|-------------|
+| `--border` | Border color |
+| `--input` | Form input borders |
+| `--ring` | Focus ring color |
+
+### Shadows
+
+| Token | Description |
+|-------|-------------|
+| `--shadow-sm` | Small shadow (buttons, inputs) |
+| `--shadow-md` | Medium shadow (cards, dropdowns) |
+| `--shadow-lg` | Large shadow (modals, popovers) |
+
+---
 
 ## Custom CSS
 
-You can inject custom CSS by adding a `styles` array to your `docs-config.json` (Coming Soon). For now, you can use inline `<style>` tags in your MDX files for page-specific overrides.
+Lito supports custom CSS through the `_css/` folder in your docs directory.
+
+### Quick Start
+
+Create a `_css/custom.css` file:
+
+```text
+my-docs/
+├── docs-config.json
+├── _css/
+│   └── custom.css
+└── ...
+```
+
+Your styles will be automatically imported.
+
+### Available Files
+
+| File | Purpose |
+|------|---------|
+| `custom.css` | General custom styles (auto-imported) |
+| `theme.css` | Theme variable overrides (auto-imported) |
+| `*.css` | Additional CSS files (manually import) |
+
+<Card title="Learn More" icon="lucide:palette">
+  For detailed CSS customization instructions, see the [Customizing Theme](/guides/customizing-theme) guide.
+</Card>
+
+---
+
+## Component Theming
+
+All MDX components use theme tokens for consistent styling:
+
+### Alert Component
+
+```jsx
+<Alert variant="info">This uses --info color</Alert>
+<Alert variant="warning">This uses --warning color</Alert>
+<Alert variant="danger">This uses --danger color</Alert>
+```
+
+<Alert variant="info">
+  Info alerts use the `--info` token.
+</Alert>
+
+<Alert variant="warning">
+  Warning alerts use the `--warning` token.
+</Alert>
+
+### Cards and Panels
+
+Cards automatically adapt to the current theme:
+
+<Card title="Themed Card" icon="lucide:palette">
+  This card uses `--card` for background and `--card-foreground` for text, ensuring it looks great in both light and dark modes.
+</Card>
+
+---
+
+## Best Practices
+
+<Steps>
+  <Step title="Use Design Tokens">
+    Always reference CSS variables instead of hardcoding colors. This ensures consistency and dark mode support.
+  </Step>
+
+  <Step title="Test Both Modes">
+    Preview your documentation in both light and dark mode during development.
+  </Step>
+
+  <Step title="Leverage Semantic Colors">
+    Use semantic tokens (`--success`, `--warning`, etc.) for UI states rather than arbitrary colors.
+  </Step>
+
+  <Step title="Respect Contrast">
+    Ensure sufficient contrast between foreground and background colors for accessibility.
+  </Step>
+</Steps>
