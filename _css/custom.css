@@ -1,0 +1,36 @@
+/*
+ * Custom CSS Demo for Lito Documentation
+ * This file demonstrates custom styling capabilities
+ */
+
+/* Custom banner style */
+.custom-banner {
+  background: linear-gradient(135deg, var(--primary-400), var(--primary-600));
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-lg);
+  margin: 1rem 0;
+  font-weight: 500;
+}
+
+/* Override primary color to a purple theme (uncomment to test) */
+/*
+:root {
+  --primary-500: oklch(0.55 0.20 280);
+  --primary-400: oklch(0.65 0.18 280);
+  --primary-600: oklch(0.45 0.18 280);
+}
+*/
+
+/* Custom callout box */
+.demo-callout {
+  border-left: 4px solid var(--primary-500);
+  background: var(--primary-50);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.dark .demo-callout {
+  background: var(--primary-100);
+}
