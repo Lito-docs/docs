@@ -1,11 +1,11 @@
 ---
 title: Installation
-description: How to install and set up SuperDocs.
+description: How to install and set up Lito.
 ---
 
 # Installation
 
-Getting started with SuperDocs is straightforward and fast. Whether you want to try it out immediately or integrate it into your project, we've got you covered.
+Getting started with Lito is straightforward and fast. Whether you want to try it out immediately or integrate it into your project, we've got you covered.
 
 ## Prerequisites
 
@@ -16,19 +16,19 @@ Getting started with SuperDocs is straightforward and fast. Whether you want to 
 
 ### Global Installation
 
-Install SuperDocs globally to use it across multiple projects:
+Install Lito globally to use it across multiple projects:
 
 ```bash
-npm install -g @devrohit06/superdocs
+npm install -g @litodocs/cli
 # or
-pnpm add -g @devrohit06/superdocs
+pnpm add -g @litodocs/cli
 ```
 
 Then use it anywhere:
 
 ```bash
-superdocs build -i ./my-docs -o ./dist
-superdocs dev -i ./my-docs
+lito build -i ./my-docs -o ./dist
+lito dev -i ./my-docs
 ```
 
 ### Method 1: The Quickest Way (npx)
@@ -36,7 +36,7 @@ superdocs dev -i ./my-docs
 If you just want to spin up a docs site from an existing folder of markdown files without installing anything:
 
 ```bash
-npx @devrohit06/superdocs dev -i ./my-docs-folder
+npx @litodocs/cli dev -i ./my-docs-folder
 ```
 
 This command will:
@@ -55,7 +55,7 @@ If you want to keep your docs versioned with your code:
 4. Run from your root:
 
 ```bash
-npx @devrohit06/superdocs dev -i ./docs
+npx @litodocs/cli dev -i ./docs
 ```
 
 ### Method 3: Using a Custom Template
@@ -63,9 +63,9 @@ npx @devrohit06/superdocs dev -i ./docs
 You can use custom templates from GitHub or local paths:
 
 ```bash
-npx @devrohit06/superdocs dev -i ./docs -t github:owner/template-repo
+npx @litodocs/cli dev -i ./docs -t github:owner/template-repo
 # or
-npx @devrohit06/superdocs dev -i ./docs -t ./path/to/local/template
+npx @litodocs/cli dev -i ./docs -t ./path/to/local/template
 ```
 
 ## Next Steps
