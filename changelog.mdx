@@ -8,7 +8,25 @@ description: All notable changes to Lito
 All notable changes to this project will be documented on this page.
 
 <Changelog>
-  <ChangelogEntry version="0.5.0" date="2026-01-04" type="major" badge="Latest">
+  <ChangelogEntry version="0.6.0" date="2026-01-05" type="major" badge="Latest">
+    <ChangelogItem type="added">
+      Strict configuration system with Core Config and Extensions separation
+    </ChangelogItem>
+    <ChangelogItem type="added">
+      Template manifest system (template.json) for declaring template capabilities
+    </ChangelogItem>
+    <ChangelogItem type="added">
+      Configuration validation for core schema at build time
+    </ChangelogItem>
+    <ChangelogItem type="changed">
+      Templates now silently ignore unsupported extensions (no warnings/errors)
+    </ChangelogItem>
+    <ChangelogItem type="changed">
+      Swap templates without changing your docs-config.json
+    </ChangelogItem>
+  </ChangelogEntry>
+
+  <ChangelogEntry version="0.5.0" date="2026-01-04" type="major">
     <ChangelogItem type="changed">
       Organization migration to official Lito-docs GitHub organization
     </ChangelogItem>

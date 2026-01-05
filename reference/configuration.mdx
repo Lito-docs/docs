@@ -7,20 +7,44 @@ description: Full reference for docs-config.json.
 
 The `docs-config.json` file controls the global settings of your site.
 
-## Configuration Object
+## Configuration Structure
 
-The root object takes the following properties:
+Lito's configuration is divided into two categories:
+
+- **Core Config** - Portable across all templates (guaranteed to work)
+- **Extensions** - Template-specific features (templates ignore what they don't support)
+
+This means you can swap templates without changing your docs - core config always works, and unsupported extensions are simply ignored.
+
+## Core Configuration
+
+These options are supported by ALL Lito templates:
+
+| Property | Type | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `metadata` | `object` | Yes | Site meta information. |
+| `branding` | `object` | No | Logo, favicon, and primary color. |
+| `navigation` | `object` | No | Sidebar and navbar structure. |
+| `search` | `object` | No | Search configuration. |
+| `seo` | `object` | No | SEO and social sharing settings. |
+| `i18n` | `object` | No | Internationalization settings. |
+| `assets` | `object` | No | Asset folder configuration. |
+
+## Extensions (Template-Specific)
+
+These options are template-specific. Templates that don't support them will simply ignore the configuration:
 
 | Property | Type | Description |
 | :--- | :--- | :--- |
-| `metadata` | `object` | Site meta information (title, description, url). |
-| `branding` | `object` | Logo and favicon settings. |
-| `navigation` | `object` | Sidebar and navbar structure. |
-| `theme` | `object` | Color palette customization. |
-| `seo` | `object` | SEO and social sharing settings. |
-| `landing` | `object` | Landing page configuration (optional). |
+| `footer` | `object` | Footer layout and links. |
+| `theme` | `object` | Extended theme options. |
+| `landing` | `object` | Landing page configuration. |
+| `integrations` | `object` | Analytics, feedback, copy page. |
+| `versioning` | `object` | Documentation versioning. |
 
-## `metadata`
+---
+
+## `metadata` (Required)
 
 ```json
 "metadata": {
@@ -31,12 +55,36 @@ The root object takes the following properties:
 }
 ```
 
+| Property | Type | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `name` | `string` | **Yes** | Site name (appears in title and meta tags). |
+| `description` | `string` | No | Default site description for SEO. |
+| `url` | `string` | No | Base URL for canonical URLs and OG tags. |
+| `version` | `string` | No | Documentation version. |
+
+## `branding`
+
+```json
+"branding": {
+  "logo": {
+    "light": "/logo-light.svg",
+    "dark": "/logo-dark.svg",
+    "href": "/"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#6366f1"
+  }
+}
+```
+
 | Property | Type | Description |
 | :--- | :--- | :--- |
-| `name` | `string` | Site name (appears in title and meta tags). |
-| `description` | `string` | Default site description for SEO. |
-| `url` | `string` | Base URL for canonical URLs and OG tags. |
-| `version` | `string` | Documentation version (optional). |
+| `logo.light` | `string` | Logo for light mode. |
+| `logo.dark` | `string` | Logo for dark mode. |
+| `logo.href` | `string` | Link when clicking the logo. |
+| `favicon` | `string` | Favicon path. |
+| `colors.primary` | `string` | Primary brand color. |
 
 ## `navigation`
 
@@ -44,44 +92,71 @@ The root object takes the following properties:
 "navigation": {
   "navbar": {
     "links": [
-      { "label": "GitHub", "href": "..." }
+      { "label": "GitHub", "href": "https://github.com/..." }
     ],
-    "cta": { "label": "Get Started", "href": "..." }
+    "cta": { "label": "Get Started", "href": "/introduction" }
   },
   "sidebar": [
     {
-      "label": "Group Name",
+      "label": "Getting Started",
       "items": [
-        { "label": "Page Name", "href": "/path/to/page" }
+        { "label": "Installation", "href": "/getting-started/installation" },
+        { "label": "Quick Start", "href": "/getting-started/quick-start" }
       ]
     }
   ]
 }
 ```
 
-## `theme`
+### Sidebar Items
+
+| Property | Type | Description |
+| :--- | :--- | :--- |
+| `label` | `string` | Display text. |
+| `href` | `string` | Page URL or external link. |
+| `slug` | `string` | Page slug (alternative to href). |
+| `icon` | `string` | Iconify icon name (e.g., `lucide:home`). |
+| `method` | `string` | HTTP method for API docs (`GET`, `POST`, etc.). |
+| `items` | `array` | Nested items for sub-groups. |
+
+### Locale-Specific Sidebars
+
+You can define different sidebars per locale:
 
 ```json
-"theme": {
-  "primaryColor": "#6366f1",
-  "accentColor": "#22d3ee"
+"navigation": {
+  "sidebar": [...],
+  "sidebar.es": [...],
+  "sidebar.fr": [...]
 }
 ```
 
-## `seo`
+## `search`
 
-Configure SEO defaults for your documentation site.
+```json
+"search": {
+  "enabled": true,
+  "provider": "local",
+  "placeholder": "Search docs..."
+}
+```
+
+| Property | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `enabled` | `boolean` | `true` | Enable search. |
+| `provider` | `string` | `local` | Search provider (`local` or `algolia`). |
+| `placeholder` | `string` | `Search...` | Search input placeholder. |
+
+## `seo`
 
 ```json
 "seo": {
   "ogImage": "/og-image.png",
   "twitterHandle": "@yourhandle",
-  "twitterSite": "@sitehandle",
   "defaultAuthor": "Your Name",
-  "defaultKeywords": ["docs", "api", "documentation"],
+  "defaultKeywords": ["docs", "api"],
   "enableJsonLd": true,
-  "organizationName": "Your Organization",
-  "organizationLogo": "/logo.png",
+  "organizationName": "Your Org",
   "articleType": "TechArticle",
   "autoCanonical": true,
   "enableBreadcrumbs": true
@@ -90,21 +165,65 @@ Configure SEO defaults for your documentation site.
 
 | Property | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
-| `ogImage` | `string` | `/og-image.png` | Default Open Graph image for social sharing. |
-| `twitterHandle` | `string` | - | Twitter handle for `twitter:creator` meta tag. |
-| `twitterSite` | `string` | - | Twitter site handle (defaults to `twitterHandle`). |
-| `defaultAuthor` | `string` | - | Default author name for article metadata. |
-| `defaultKeywords` | `string[]` | - | Default keywords applied to all pages. |
+| `ogImage` | `string` | - | Default Open Graph image. |
+| `twitterHandle` | `string` | - | Twitter handle for `twitter:creator`. |
+| `twitterSite` | `string` | - | Twitter site handle. |
+| `defaultAuthor` | `string` | - | Default author name. |
+| `defaultKeywords` | `string[]` | - | Default keywords for all pages. |
 | `enableJsonLd` | `boolean` | `true` | Enable JSON-LD structured data. |
-| `organizationName` | `string` | - | Organization name for JSON-LD publisher info. |
-| `organizationLogo` | `string` | - | Organization logo URL for JSON-LD. |
-| `articleType` | `string` | `TechArticle` | JSON-LD article type (`TechArticle` or `Article`). |
-| `autoCanonical` | `boolean` | `true` | Automatically generate canonical URLs. |
-| `enableBreadcrumbs` | `boolean` | `true` | Enable breadcrumb JSON-LD structured data. |
+| `organizationName` | `string` | - | Organization name for JSON-LD. |
+| `organizationLogo` | `string` | - | Organization logo URL. |
+| `articleType` | `string` | `TechArticle` | `TechArticle` or `Article`. |
+| `autoCanonical` | `boolean` | `true` | Auto-generate canonical URLs. |
+| `enableBreadcrumbs` | `boolean` | `true` | Enable breadcrumb JSON-LD. |
 
-## `landing`
+## `i18n`
 
-Configure an optional landing page for your docs site.
+```json
+"i18n": {
+  "defaultLocale": "en",
+  "locales": ["en", "es", "fr"],
+  "routing": {
+    "prefixDefaultLocale": false
+  },
+  "translations": {
+    "es": {
+      "search.placeholder": "Buscar..."
+    }
+  }
+}
+```
+
+| Property | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `defaultLocale` | `string` | `en` | Default locale. |
+| `locales` | `string[]` | `["en"]` | Supported locales. |
+| `routing.prefixDefaultLocale` | `boolean` | `false` | Include default locale in URLs. |
+| `translations` | `object` | - | Custom UI translations per locale. |
+
+## `assets`
+
+```json
+"assets": {
+  "images": "_images",
+  "css": "_css",
+  "static": "_assets"
+}
+```
+
+| Property | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `images` | `string` | `_images` | Images folder name. |
+| `css` | `string` | `_css` | CSS folder name. |
+| `static` | `string` | `_assets` | Static assets folder. |
+
+---
+
+## Extensions
+
+### `landing`
+
+Configure an optional landing page:
 
 ```json
 "landing": {
@@ -125,5 +244,74 @@ Configure an optional landing page for your docs site.
       "icon": "rocket"
     }
   ]
+}
+```
+
+### `footer`
+
+```json
+"footer": {
+  "layout": "full",
+  "tagline": "Beautiful docs made simple",
+  "copyright": "© {year} Your Company",
+  "showBranding": true,
+  "socials": {
+    "github": "https://github.com/...",
+    "twitter": "https://twitter.com/..."
+  },
+  "links": [
+    {
+      "title": "Resources",
+      "items": [
+        { "label": "Documentation", "href": "/docs" }
+      ]
+    }
+  ]
+}
+```
+
+### `theme`
+
+```json
+"theme": {
+  "mode": "auto",
+  "defaultDark": false,
+  "primaryColor": "#6366f1",
+  "accentColor": "#22d3ee"
+}
+```
+
+### `integrations`
+
+```json
+"integrations": {
+  "analytics": {
+    "provider": "google",
+    "measurementId": "G-XXXXXXX"
+  },
+  "feedback": {
+    "enabled": true
+  },
+  "copyPage": {
+    "enabled": true,
+    "position": "bottom-right"
+  }
+}
+```
+
+### `versioning`
+
+```json
+"versioning": {
+  "enabled": true,
+  "defaultVersion": "latest",
+  "versions": [
+    { "id": "latest", "label": "Latest", "path": "latest" },
+    { "id": "v1", "label": "v1.0", "path": "v1", "deprecated": true }
+  ],
+  "versionBanner": {
+    "enabled": true,
+    "message": "You are viewing docs for an older version."
+  }
 }
 ```

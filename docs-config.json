@@ -2,12 +2,13 @@
   "metadata": {
     "name": "Lito docs",
     "description": "A comprehensive demo of Lito - the open-source Mintlify alternative",
-    "version": "0.4.0"
+    "version": "0.6.0"
   },
   "branding": {
     "favicon": "/fire-favicon.svg",
     "logo": {
-      "src": "/logo.svg",
+      "light": "/logo.svg",
+      "dark": "/logo.svg",
       "href": "/"
     },
     "colors": {
@@ -286,6 +287,48 @@
         "description": "Built on Astro for maximum performance.",
         "icon": "🚀"
       }
+    ]
+  },
+  "footer": {
+    "layout": "full",
+    "tagline": "Beautiful documentation sites from Markdown. Fast, simple, and open-source.",
+    "copyright": "© {year} Lito. All rights reserved.",
+    "showBranding": true,
+    "showVersion": true,
+    "socials": {
+      "github": "https://github.com/Lito-docs",
+      "twitter": "https://twitter.com/litodocs",
+      "discord": "https://discord.gg/litodocs"
+    },
+    "links": [
+      {
+        "title": "Product",
+        "items": [
+          { "label": "Documentation", "href": "/introduction" },
+          { "label": "Components", "href": "/reference/components" },
+          { "label": "Changelog", "href": "/changelog" }
+        ]
+      },
+      {
+        "title": "Resources",
+        "items": [
+          { "label": "Getting Started", "href": "/getting-started/installation" },
+          { "label": "CLI Reference", "href": "/reference/cli-commands" },
+          { "label": "Configuration", "href": "/reference/configuration" }
+        ]
+      },
+      {
+        "title": "Community",
+        "items": [
+          { "label": "GitHub", "href": "https://github.com/Lito-docs", "external": true },
+          { "label": "Discord", "href": "https://discord.gg/litodocs", "external": true },
+          { "label": "Twitter", "href": "https://twitter.com/litodocs", "external": true }
+        ]
+      }
+    ],
+    "bottomLinks": [
+      { "label": "Privacy Policy", "href": "/privacy" },
+      { "label": "Terms of Service", "href": "/terms" }
     ]
   }
 }
