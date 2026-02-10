@@ -1,0 +1,43 @@
+---
+title: Installation
+description: How to install Lito v2.
+---
+
+# Installation (v2)
+
+## Prerequisites
+
+- **Node.js**: Version 18.0.0 or higher
+- **npm**, **yarn**, or **pnpm** package manager
+
+## Installation Methods
+
+### Global Installation
+
+```bash
+npm install -g @litodocs/cli@2
+# or
+pnpm add -g @litodocs/cli@2
+```
+
+### Using npx
+
+```bash
+npx @litodocs/cli@2 dev -i ./my-docs
+```
+
+## Available Templates
+
+Lito v2 introduced multi-framework support:
+
+| Template | Command Flag |
+|----------|-------------|
+| Astro (default) | `--template astro` |
+| React Router | `--template react` |
+| Next.js | `--template next` |
+| Vue | `--template vue` |
+| Nuxt | `--template nuxt` |
+
+## Next Steps
+
+- [Quick Start](/v2/getting-started/quick-start) — Build your first site with MDX

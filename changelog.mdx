@@ -8,7 +8,27 @@ description: All notable changes to Lito
 All notable changes to this project will be documented on this page.
 
 <Changelog>
-  <ChangelogEntry version="0.7.0" date="2026-01-28" type="major" badge="Latest">
+  <ChangelogEntry version="1.0.0" date="2026-02-10" type="major" badge="Stable">
+    <ChangelogItem type="added">
+      Dual publishing to npm and GitHub Packages
+    </ChangelogItem>
+    <ChangelogItem type="changed">
+      Decluttered navbar — version/language switchers moved to sidebar, social links reorganized
+    </ChangelogItem>
+    <ChangelogItem type="changed">
+      CLI version now reads dynamically from `package.json` — no more version drift
+    </ChangelogItem>
+    <ChangelogItem type="changed">
+      Version and language switchers support multiple instances (sidebar + mobile nav)
+    </ChangelogItem>
+    <ChangelogItem type="fixed">
+      npm package reduced from 31 MB to 39 KB with proper `files` field
+    </ChangelogItem>
+    <ChangelogItem type="fixed">
+      CLI version mismatch — update checker was stuck at v0.5.2
+    </ChangelogItem>
+  </ChangelogEntry>
+  <ChangelogEntry version="0.7.0" date="2026-01-28" type="major">
     <ChangelogItem type="added">
       Multi-framework support: Astro, React, Next.js, Vue, and Nuxt templates
     </ChangelogItem>

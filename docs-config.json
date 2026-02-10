@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Lito docs",
     "description": "A comprehensive demo of Lito - the open-source Mintlify alternative",
-    "version": "0.7.0"
+    "version": "1.0.0"
   },
   "branding": {
     "favicon": "/fire-favicon.svg",
@@ -21,6 +21,45 @@
   },
   "navigation": {
     "navbar": {
+      "links": [
+        {
+          "label": "Docs",
+          "href": "/introduction"
+        },
+        {
+          "label": "Resources",
+          "type": "dropdown",
+          "items": [
+            {
+              "label": "Components",
+              "href": "/reference/components",
+              "description": "20+ built-in MDX components"
+            },
+            {
+              "label": "API Reference",
+              "href": "/api",
+              "description": "REST API documentation"
+            },
+            {
+              "label": "Changelog",
+              "href": "/changelog",
+              "description": "Latest updates and releases"
+            }
+          ]
+        }
+      ],
+      "social": {
+        "github": {
+          "href": "https://github.com/Lito-docs/cli",
+          "showStars": true
+        },
+        "twitter": {
+          "href": "https://twitter.com/litodocs"
+        },
+        "discord": {
+          "href": "https://discord.gg/litodocs"
+        }
+      },
       "cta": {
         "label": "Get Started",
         "href": "/introduction"
@@ -252,6 +291,22 @@
       }
     }
   },
+  "integrations": {
+    "editPage": {
+      "enabled": true,
+      "pattern": "https://github.com/Lito-docs/docs/edit/main/{path}"
+    },
+    "lastUpdated": {
+      "enabled": true,
+      "format": "long"
+    },
+    "feedback": {
+      "enabled": true
+    },
+    "copyPage": {
+      "enabled": true
+    }
+  },
   "assets": {
     "images": "_images",
     "css": "_css",
@@ -262,6 +317,32 @@
     "source": "_landing",
     "injectNav": true,
     "injectFooter": true
+  },
+  "versioning": {
+    "enabled": true,
+    "defaultVersion": "latest",
+    "versions": [
+      {
+        "id": "latest",
+        "label": "Latest (v3)",
+        "path": "latest"
+      },
+      {
+        "id": "v2",
+        "label": "v2.x",
+        "path": "v2"
+      },
+      {
+        "id": "v1",
+        "label": "v1.x",
+        "path": "v1",
+        "deprecated": true
+      }
+    ],
+    "versionBanner": {
+      "enabled": true,
+      "message": "You are viewing documentation for {version}. See the {latest} version."
+    }
   },
   "footer": {
     "layout": "full",
