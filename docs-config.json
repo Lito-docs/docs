@@ -65,6 +65,33 @@
         "href": "/introduction"
       }
     },
+    "anchors": [
+      {
+        "label": "Documentation",
+        "href": "/introduction",
+        "icon": "lucide:book-open",
+        "groups": [
+          "Introduction",
+          "Getting Started",
+          "Core Concepts",
+          "Reference"
+        ]
+      },
+      {
+        "label": "API Reference",
+        "href": "/api",
+        "icon": "lucide:code",
+        "color": "#3b82f6",
+        "groups": ["API Reference"]
+      },
+      {
+        "label": "Guides",
+        "href": "/guides/customizing-theme",
+        "icon": "lucide:compass",
+        "color": "#8b5cf6",
+        "groups": ["Guides"]
+      }
+    ],
     "sidebar": [
       {
         "label": "Introduction",
@@ -367,7 +394,10 @@
       {
         "title": "Resources",
         "items": [
-          { "label": "Getting Started", "href": "/getting-started/installation" },
+          {
+            "label": "Getting Started",
+            "href": "/getting-started/installation"
+          },
           { "label": "CLI Reference", "href": "/reference/cli-commands" },
           { "label": "Configuration", "href": "/reference/configuration" }
         ]
@@ -375,9 +405,21 @@
       {
         "title": "Community",
         "items": [
-          { "label": "GitHub", "href": "https://github.com/Lito-docs", "external": true },
-          { "label": "Discord", "href": "https://discord.gg/litodocs", "external": true },
-          { "label": "Twitter", "href": "https://twitter.com/litodocs", "external": true }
+          {
+            "label": "GitHub",
+            "href": "https://github.com/Lito-docs",
+            "external": true
+          },
+          {
+            "label": "Discord",
+            "href": "https://discord.gg/GauEhTBktj",
+            "external": true
+          },
+          {
+            "label": "Twitter",
+            "href": "https://twitter.com/litodocs",
+            "external": true
+          }
         ]
       }
     ],
