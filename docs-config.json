@@ -43,7 +43,7 @@
             },
             {
               "label": "Changelog",
-              "href": "/changelog",
+              "href": "/community/changelog",
               "description": "Latest updates and releases"
             }
           ]
@@ -63,7 +63,7 @@
       },
       "cta": {
         "label": "Get Started",
-        "href": "/introduction"
+        "href": "/getting-started/installation"
       }
     },
     "anchors": [
@@ -74,8 +74,9 @@
         "groups": [
           "Introduction",
           "Getting Started",
-          "Core Concepts",
-          "Reference"
+          "Guides",
+          "Reference",
+          "Community"
         ]
       },
       {
@@ -84,13 +85,6 @@
         "icon": "lucide:code",
         "color": "#3b82f6",
         "groups": ["API Reference"]
-      },
-      {
-        "label": "Guides",
-        "href": "/guides/customizing-theme",
-        "icon": "lucide:compass",
-        "color": "#8b5cf6",
-        "groups": ["Guides"]
       }
     ],
     "sidebar": [
@@ -106,9 +100,8 @@
             "href": "/introduction/what-is-lito"
           },
           {
-            "label": "Changelog",
-            "href": "/changelog",
-            "icon": "lucide:history"
+            "label": "Architecture",
+            "href": "/introduction/architecture"
           }
         ]
       },
@@ -130,25 +123,20 @@
         ]
       },
       {
-        "label": "Core Concepts",
+        "label": "Guides",
         "items": [
           {
-            "label": "Architecture",
-            "href": "/concepts/architecture"
-          },
-          {
-            "label": "Theming",
-            "href": "/concepts/theming"
+            "label": "Adding Pages",
+            "href": "/guides/adding-pages"
           },
           {
             "label": "Markdown Features",
-            "href": "/concepts/markdown-features"
-          }
-        ]
-      },
-      {
-        "label": "Guides",
-        "items": [
+            "href": "/guides/markdown-features"
+          },
+          {
+            "label": "Theming",
+            "href": "/guides/theming"
+          },
           {
             "label": "Customizing Theme",
             "href": "/guides/customizing-theme"
@@ -159,8 +147,14 @@
             "icon": "lucide:layout"
           },
           {
-            "label": "Adding Pages",
-            "href": "/guides/adding-pages"
+            "label": "Internationalization (i18n)",
+            "href": "/guides/internationalization",
+            "icon": "lucide:languages"
+          },
+          {
+            "label": "Versioning",
+            "href": "/guides/versioning",
+            "icon": "lucide:git-branch"
           },
           {
             "label": "SEO & Meta Tags",
@@ -203,18 +197,28 @@
         "items": [
           {
             "label": "Contributing",
-            "href": "/contributing",
+            "href": "/community/contributing",
             "icon": "lucide:heart"
           },
           {
+            "label": "Changelog",
+            "href": "/community/changelog",
+            "icon": "lucide:history"
+          },
+          {
             "label": "Roadmap",
-            "href": "/roadmap",
+            "href": "/community/roadmap",
             "icon": "lucide:map"
           },
           {
             "label": "FAQ",
-            "href": "/faq",
+            "href": "/community/faq",
             "icon": "lucide:help-circle"
+          },
+          {
+            "label": "Showcase",
+            "href": "/community/showcase",
+            "icon": "lucide:globe"
           }
         ]
       },
@@ -411,7 +415,7 @@
         "items": [
           { "label": "Documentation", "href": "/introduction" },
           { "label": "Components", "href": "/reference/components" },
-          { "label": "Changelog", "href": "/changelog" }
+          { "label": "Changelog", "href": "/community/changelog" }
         ]
       },
       {
@@ -447,8 +451,8 @@
       }
     ],
     "bottomLinks": [
-      { "label": "Privacy Policy", "href": "/privacy" },
-      { "label": "Terms of Service", "href": "/terms" }
+      { "label": "Privacy Policy", "href": "/legal/privacy" },
+      { "label": "Terms of Service", "href": "/legal/terms" }
     ]
   }
 }

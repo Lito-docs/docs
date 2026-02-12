@@ -1,0 +1,234 @@
+---
+title: Internationalization (i18n)
+description: "Add multi-language support to your Lito documentation site with locale-based routing, translated sidebars, and custom UI translations"
+keywords:
+  - i18n
+  - internationalization
+  - multi-language docs
+  - localization
+  - translations
+author: Lito Team
+publishDate: "2026-02-10"
+modifiedDate: "2026-02-13"
+readingTime: 5
+tags:
+  - guides
+  - i18n
+section: Guides
+---
+
+# Internationalization (i18n)
+
+Lito has built-in support for multi-language documentation. You can serve your docs in multiple languages with locale-based routing, translated navigation, and localized UI strings.
+
+## Configuration
+
+Enable i18n by adding an `i18n` section to your `docs-config.json`:
+
+```json
+{
+  "i18n": {
+    "defaultLocale": "en",
+    "locales": ["en", "es", "fr", "de"],
+    "routing": {
+      "prefixDefaultLocale": false
+    }
+  }
+}
+```
+
+| Property | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `defaultLocale` | `string` | `"en"` | The primary language of your docs. |
+| `locales` | `string[]` | `["en"]` | All supported locale codes. |
+| `routing.prefixDefaultLocale` | `boolean` | `false` | Whether to include the default locale in URLs (e.g., `/en/getting-started`). |
+
+## Folder Structure
+
+Create a folder for each non-default locale at the root of your docs directory. The folder name must match the locale code:
+
+```text
+docs/
+├── getting-started/
+│   ├── installation.mdx        # English (default)
+│   └── quick-start.mdx
+├── es/
+│   └── getting-started/
+│       ├── installation.mdx    # Spanish
+│       └── quick-start.mdx
+├── fr/
+│   └── getting-started/
+│       ├── installation.mdx    # French
+│       └── quick-start.mdx
+└── docs-config.json
+```
+
+- The **default locale** content lives at the root (no prefix folder).
+- Each **additional locale** has its own folder that mirrors the same directory structure.
+- You only need to translate the pages you want — untranslated pages won't appear in that locale's navigation.
+
+## URL Routing
+
+With `prefixDefaultLocale: false` (the default), URLs look like this:
+
+| Page | English URL | Spanish URL | French URL |
+| :--- | :--- | :--- | :--- |
+| Installation | `/getting-started/installation` | `/es/getting-started/installation` | `/fr/getting-started/installation` |
+| Quick Start | `/getting-started/quick-start` | `/es/getting-started/quick-start` | `/fr/getting-started/quick-start` |
+
+If you set `prefixDefaultLocale: true`, the default locale also gets a prefix:
+
+| Page | English URL | Spanish URL |
+| :--- | :--- | :--- |
+| Installation | `/en/getting-started/installation` | `/es/getting-started/installation` |
+
+## Translated Sidebars
+
+Each locale can have its own sidebar with localized labels. Define locale-specific sidebars using the `sidebar.<locale>` key:
+
+```json
+{
+  "navigation": {
+    "sidebar": [
+      {
+        "label": "Getting Started",
+        "items": [
+          { "label": "Installation", "href": "/getting-started/installation" },
+          { "label": "Quick Start", "href": "/getting-started/quick-start" }
+        ]
+      }
+    ],
+    "sidebar.es": [
+      {
+        "label": "Primeros Pasos",
+        "items": [
+          { "label": "Instalación", "href": "/getting-started/installation" },
+          { "label": "Inicio Rápido", "href": "/getting-started/quick-start" }
+        ]
+      }
+    ],
+    "sidebar.fr": [
+      {
+        "label": "Pour Commencer",
+        "items": [
+          { "label": "Installation", "href": "/getting-started/installation" },
+          { "label": "Démarrage Rapide", "href": "/getting-started/quick-start" }
+        ]
+      }
+    ]
+  }
+}
+```
+
+> [!NOTE]
+> The `href` values in locale sidebars point to the base path. Lito automatically resolves them to the correct locale path (e.g., `/es/getting-started/installation`) based on the active locale.
+
+## UI Translations
+
+Override built-in UI strings (search placeholder, navigation labels, etc.) per locale using the `translations` key:
+
+```json
+{
+  "i18n": {
+    "defaultLocale": "en",
+    "locales": ["en", "es", "fr"],
+    "translations": {
+      "es": {
+        "search.placeholder": "Buscar en la documentación...",
+        "toc.title": "En esta página",
+        "footer.editPage": "Editar esta página",
+        "footer.lastUpdated": "Última actualización"
+      },
+      "fr": {
+        "search.placeholder": "Rechercher dans la documentation...",
+        "toc.title": "Sur cette page",
+        "footer.editPage": "Modifier cette page",
+        "footer.lastUpdated": "Dernière mise à jour"
+      }
+    }
+  }
+}
+```
+
+### Available Translation Keys
+
+| Key | Default (English) | Description |
+| :--- | :--- | :--- |
+| `search.placeholder` | `"Search docs..."` | Search input placeholder text. |
+| `toc.title` | `"On this page"` | Table of contents heading. |
+| `footer.editPage` | `"Edit this page"` | Edit page link text. |
+| `footer.lastUpdated` | `"Last updated"` | Last updated label. |
+| `nav.previous` | `"Previous"` | Previous page link. |
+| `nav.next` | `"Next"` | Next page link. |
+
+## Language Switcher
+
+When multiple locales are configured, Lito automatically displays a language switcher in the sidebar. Users can switch between available languages and their selection is persisted.
+
+The switcher shows the locale code by default. To display friendly names, you can extend the locale configuration:
+
+```json
+{
+  "i18n": {
+    "locales": ["en", "es", "fr", "de"],
+    "localeLabels": {
+      "en": "English",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch"
+    }
+  }
+}
+```
+
+## Writing Translated Content
+
+When creating translated pages, mirror the same frontmatter structure as the original page but translate the values:
+
+```mdx
+---
+title: Instalación
+description: "Guía paso a paso para instalar y configurar Lito CLI"
+keywords:
+  - instalar lito
+  - configurar lito
+author: Lito Team
+---
+
+# Instalación
+
+Esta guía te ayudará a instalar y configurar Lito en tu proyecto.
+```
+
+> [!TIP]
+> You don't need to translate every page. Start with the most important pages (getting started, key guides) and add more translations over time. Pages without a translation in a given locale simply won't appear in that locale's sidebar.
+
+## RTL Language Support
+
+Lito supports right-to-left (RTL) languages like Arabic and Hebrew. When a RTL locale is active, the layout direction is automatically flipped. Add RTL locales the same way:
+
+```json
+{
+  "i18n": {
+    "locales": ["en", "ar", "he"],
+    "rtl": ["ar", "he"]
+  }
+}
+```
+
+## Best Practices
+
+<Steps>
+  <Step title="Start with key pages">
+    Translate your getting started guide, installation instructions, and most-visited pages first. Full coverage can come later.
+  </Step>
+  <Step title="Keep structure consistent">
+    Mirror the same folder structure across all locales. This makes it easier to track which pages still need translation.
+  </Step>
+  <Step title="Use locale-specific sidebars">
+    Always define a `sidebar.<locale>` for each language. This ensures navigation labels are properly translated, not just the page content.
+  </Step>
+  <Step title="Review with native speakers">
+    Machine translation is a good starting point, but have native speakers review the content for accuracy and natural phrasing.
+  </Step>
+</Steps>

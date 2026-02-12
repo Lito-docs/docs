@@ -1,0 +1,177 @@
+---
+title: Versioning
+description: "Serve multiple versions of your documentation side by side with version switching, deprecation banners, and folder-based versioned content"
+keywords:
+  - documentation versioning
+  - version switcher
+  - versioned docs
+  - multi-version documentation
+author: Lito Team
+publishDate: "2026-02-10"
+modifiedDate: "2026-02-13"
+readingTime: 4
+tags:
+  - guides
+  - versioning
+section: Guides
+---
+
+# Versioning
+
+Lito supports serving multiple versions of your documentation simultaneously. This is useful when you maintain multiple major versions of a product and need separate docs for each.
+
+## Configuration
+
+Enable versioning in your `docs-config.json`:
+
+```json
+{
+  "versioning": {
+    "enabled": true,
+    "defaultVersion": "latest",
+    "versions": [
+      { "id": "latest", "label": "Latest (v3)", "path": "latest" },
+      { "id": "v2", "label": "v2.x", "path": "v2" },
+      { "id": "v1", "label": "v1.x", "path": "v1", "deprecated": true }
+    ]
+  }
+}
+```
+
+| Property | Type | Description |
+| :--- | :--- | :--- |
+| `enabled` | `boolean` | Enable or disable versioning. |
+| `defaultVersion` | `string` | The version `id` that serves as the default (unversioned) docs. |
+| `versions` | `array` | List of version objects. |
+
+### Version Object
+
+| Property | Type | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `id` | `string` | Yes | Unique identifier for the version. |
+| `label` | `string` | Yes | Display label in the version switcher. |
+| `path` | `string` | Yes | Folder name and URL prefix for this version. |
+| `deprecated` | `boolean` | No | Mark a version as deprecated. Shows a warning banner. |
+
+## Folder Structure
+
+The default version's content lives at the root of your docs directory. Each older version has its own folder:
+
+```text
+docs/
+├── getting-started/
+│   ├── installation.mdx        # Latest version (default)
+│   └── quick-start.mdx
+├── v2/
+│   ├── index.mdx               # v2 landing page
+│   ├── introduction/
+│   │   └── index.mdx
+│   └── getting-started/
+│       ├── installation.mdx    # v2 installation
+│       └── quick-start.mdx
+├── v1/
+│   ├── index.mdx               # v1 landing page
+│   └── getting-started/
+│       ├── installation.mdx    # v1 installation
+│       └── quick-start.mdx
+└── docs-config.json
+```
+
+- The **default version** (`latest`) content lives at the root — no version folder.
+- **Older versions** each have a folder matching their `path` value.
+- Each version folder mirrors the same directory structure.
+
+## URL Routing
+
+| Page | Latest URL | v2 URL | v1 URL |
+| :--- | :--- | :--- | :--- |
+| Installation | `/getting-started/installation` | `/v2/getting-started/installation` | `/v1/getting-started/installation` |
+| Quick Start | `/getting-started/quick-start` | `/v2/getting-started/quick-start` | `/v1/getting-started/quick-start` |
+
+The default version has no URL prefix. Older versions use their `path` as the prefix.
+
+## Version Switcher
+
+When versioning is enabled, Lito displays a version dropdown in the sidebar. Users can switch between versions and their selection is persisted in the browser.
+
+## Deprecation Banners
+
+Mark older versions as deprecated to display a warning banner at the top of every page in that version:
+
+```json
+{
+  "versioning": {
+    "versions": [
+      { "id": "v1", "label": "v1.x", "path": "v1", "deprecated": true }
+    ],
+    "versionBanner": {
+      "enabled": true,
+      "message": "You are viewing documentation for {version}. See the {latest} version."
+    }
+  }
+}
+```
+
+The `{version}` and `{latest}` placeholders are automatically replaced with the current version label and a link to the latest version.
+
+> [!WARNING]
+> Deprecated versions still appear in the version switcher and are fully accessible. The deprecation flag only adds a visual banner — it doesn't hide or remove the version.
+
+## Version-Specific Sidebars
+
+You can define different sidebar navigation for each version if the page structure differs:
+
+```json
+{
+  "navigation": {
+    "sidebar": [...],
+    "sidebar.v2": [
+      {
+        "label": "Getting Started",
+        "items": [
+          { "label": "Installation", "href": "/getting-started/installation" },
+          { "label": "Quick Start", "href": "/getting-started/quick-start" }
+        ]
+      }
+    ]
+  }
+}
+```
+
+If no version-specific sidebar is defined, the default sidebar is used for all versions.
+
+## Adding a New Version
+
+When you release a new major version:
+
+<Steps>
+  <Step title="Copy the current docs to a version folder">
+    Before making breaking changes to your docs, copy the current content into a new version folder (e.g., `v3/`).
+  </Step>
+  <Step title="Update the default content">
+    Make your changes to the root docs (the new latest version).
+  </Step>
+  <Step title="Update docs-config.json">
+    Add the new version to the `versions` array and update `defaultVersion` if needed:
+
+    ```json
+    {
+      "versioning": {
+        "defaultVersion": "latest",
+        "versions": [
+          { "id": "latest", "label": "Latest (v4)", "path": "latest" },
+          { "id": "v3", "label": "v3.x", "path": "v3" },
+          { "id": "v2", "label": "v2.x", "path": "v2", "deprecated": true }
+        ]
+      }
+    }
+    ```
+  </Step>
+</Steps>
+
+## Best Practices
+
+- **Only version when needed.** If your API or configuration hasn't changed significantly, a single set of docs with version callouts may be simpler than full versioning.
+- **Keep the default version up to date.** The root content should always reflect the latest stable release.
+- **Mark old versions as deprecated.** This sets clear expectations for readers and encourages them to upgrade.
+- **Minimize duplication.** Only include pages in version folders that actually differ from the latest version. Shared content can stay at the root.
