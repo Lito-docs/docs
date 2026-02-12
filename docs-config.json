@@ -1,7 +1,8 @@
 {
   "metadata": {
     "name": "Lito docs",
-    "description": "A comprehensive demo of Lito - the open-source Mintlify alternative",
+    "description": "Lito is an open-source Mintlify alternative that generates beautiful documentation sites from Markdown and MDX with zero config",
+    "url": "https://lito.rohitk06.in",
     "version": "1.0.0"
   },
   "branding": {
@@ -198,6 +199,26 @@
         ]
       },
       {
+        "label": "Community",
+        "items": [
+          {
+            "label": "Contributing",
+            "href": "/contributing",
+            "icon": "lucide:heart"
+          },
+          {
+            "label": "Roadmap",
+            "href": "/roadmap",
+            "icon": "lucide:map"
+          },
+          {
+            "label": "FAQ",
+            "href": "/faq",
+            "icon": "lucide:help-circle"
+          }
+        ]
+      },
+      {
         "label": "API Reference",
         "items": [
           {
@@ -295,10 +316,12 @@
   "seo": {
     "ogImage": "/og-image.png",
     "twitterHandle": "@litodocs",
+    "twitterSite": "@litodocs",
     "defaultAuthor": "Lito Team",
-    "defaultKeywords": ["documentation", "lito", "astro", "markdown"],
+    "defaultKeywords": ["documentation", "docs", "lito", "astro", "markdown", "mdx", "open source", "mintlify alternative", "static site generator"],
     "enableJsonLd": true,
     "organizationName": "Lito",
+    "organizationLogo": "/logo.svg",
     "articleType": "TechArticle",
     "autoCanonical": true,
     "enableBreadcrumbs": true

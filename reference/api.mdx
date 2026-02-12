@@ -1,11 +1,24 @@
 ---
 title: API Reference
-description: How to document APIs with SuperDocs components.
+description: How to document APIs with Lito components.
+keywords:
+  - api documentation
+  - rest api
+  - api components
+  - lito api reference
+author: Lito Team
+publishDate: "2026-01-04"
+modifiedDate: "2026-02-10"
+readingTime: 12
+tags:
+  - reference
+  - api
+section: Reference
 ---
 
 # API Reference
 
-SuperDocs provides specialized components for documenting REST APIs. This page demonstrates how to use them to create beautiful, interactive API documentation.
+Lito provides specialized components for documenting REST APIs. This page demonstrates how to use them to create beautiful, interactive API documentation.
 
 ---
 
@@ -243,14 +256,14 @@ Interactive API testing component that lets users make real API requests. Featur
 
 ## OpenAPI Support
 
-SuperDocs can automatically generate API documentation from OpenAPI/Swagger specifications.
+Lito can automatically generate API documentation from OpenAPI/Swagger specifications.
 
 ### OpenAPISpec Component
 
 Renders all endpoints from an OpenAPI spec file:
 
 ```jsx
-import { parseOpenAPIFile } from 'superdocs-theme-default/utils/openapi';
+import { parseOpenAPIFile } from '@litodocs/utils/openapi';
 
 // In your .astro file frontmatter:
 const spec = await parseOpenAPIFile('./api-spec.yaml');

@@ -1,0 +1,141 @@
+---
+title: Roadmap
+description: "See what's planned for Lito — upcoming features, framework template progress, and community-driven priorities"
+keywords:
+  - lito roadmap
+  - upcoming features
+  - planned features
+  - lito development plan
+author: Lito Team
+publishDate: "2026-01-04"
+modifiedDate: "2026-02-12"
+readingTime: 4
+tags:
+  - community
+  - roadmap
+section: Community
+---
+
+# Roadmap
+
+Lito's mission is to make it effortless for any developer to create beautiful, production-grade documentation sites from Markdown. No vendor lock-in, no monthly fees, no compromises on quality.
+
+This page outlines where we are, where we're going, and how you can help shape the direction.
+
+---
+
+## Current Status
+
+Lito is already usable for production documentation. Here's what's shipped and what's actively being worked on.
+
+<Tabs>
+  <Tab title="Shipped">
+    - Full CLI pipeline: `init`, `dev`, `build`, `preview`, `eject`, `validate`, `doctor`
+    - Astro template with 20+ auto-imported MDX components
+    - Tailwind v4 theming with OKLCH color system and dark mode
+    - Full-text search powered by Pagefind
+    - OpenAPI/Swagger documentation support
+    - SEO optimization with JSON-LD, Open Graph, and sitemaps
+    - Custom landing pages with HTML/CSS/JS
+    - Provider-optimized builds for Vercel, Netlify, and Cloudflare
+    - Internationalization (i18n) support
+    - Documentation versioning
+    - Code syntax highlighting with Expressive Code
+    - Mermaid diagram support
+    - GitHub-style alerts
+  </Tab>
+  <Tab title="In Progress">
+    - React Router template (community-driven)
+    - Next.js template (community-driven)
+    - Vue template (early stage)
+    - Nuxt template (early stage)
+    - Plugin architecture for extending Lito
+    - Visual theme configuration
+  </Tab>
+</Tabs>
+
+---
+
+## Framework Template Progress
+
+A core goal for Lito is to support multiple frontend frameworks so teams can use their preferred stack. The Astro template is the reference implementation; other templates aim for feature parity.
+
+| Template | Status | Component Coverage | Search | API Docs | Contributors Needed |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Astro** | <Badge variant="success">Production Ready</Badge> | 20+ components | Pagefind | OpenAPI | Bug fixes |
+| **React** | <Badge variant="warning">In Progress</Badge> | ~8 components | Planned | Planned | MDX porting, sidebar |
+| **Next.js** | <Badge variant="warning">In Progress</Badge> | ~6 components | Planned | Planned | MDX porting, routing |
+| **Vue** | <Badge variant="info">Early Stage</Badge> | ~3 components | Not started | Not started | Core layout, components |
+| **Nuxt** | <Badge variant="info">Early Stage</Badge> | ~3 components | Not started | Not started | Core layout, components |
+
+> [!NOTE]
+> All templates share the same `theme.css` design system, so the visual output stays consistent regardless of the underlying framework.
+
+---
+
+## Planned Features
+
+<CardGroup>
+  <Card title="Visual Theme Editor" icon="lucide:palette">
+    A browser-based tool for customizing colors, fonts, spacing, and component styles without touching CSS. Export your theme as a `docs-config.json` update or custom CSS file.
+  </Card>
+  <Card title="Plugin System" icon="lucide:puzzle">
+    Extend Lito with community plugins. Add custom MDX components, remark/rehype plugins, analytics integrations, or entirely new features without forking the template.
+  </Card>
+  <Card title="AI-Powered Search" icon="lucide:sparkles">
+    Semantic search that understands intent, not just keywords. Ask questions in natural language and get answers drawn directly from your documentation content.
+  </Card>
+  <Card title="API Docs from Code" icon="lucide:file-code">
+    Automatically generate API documentation from code comments, TypeScript types, and JSDoc annotations. Keep your docs in sync with your codebase without manual updates.
+  </Card>
+</CardGroup>
+
+### Additional Planned Work
+
+<Steps>
+  <Step title="Git-based collaboration">
+    Built-in support for suggestion mode, review workflows, and draft documentation. Enable non-technical team members to propose doc changes through a web interface that creates pull requests.
+  </Step>
+  <Step title="Component playground">
+    An interactive preview environment where you can experiment with MDX components, adjust props, and copy the resulting code. Useful for both documentation authors and component contributors.
+  </Step>
+  <Step title="Analytics dashboard">
+    Understand how readers use your docs. See which pages are most visited, where readers drop off, and which search queries return no results. Privacy-friendly and self-hostable.
+  </Step>
+  <Step title="Migration tooling">
+    Automated migration scripts for Mintlify, Docusaurus, GitBook, and other documentation platforms. Convert frontmatter, rewrite component syntax, and map navigation structures.
+  </Step>
+</Steps>
+
+---
+
+## Community Priorities
+
+The roadmap is shaped by community feedback. These are the most-requested features from GitHub issues and Discord discussions:
+
+1. **Multi-framework support** -- The most requested feature. Enabling React, Next.js, Vue, and Nuxt templates so teams can use their preferred stack.
+2. **Plugin system** -- Let the community extend Lito without maintaining forks.
+3. **Visual theme editor** -- Lower the barrier for non-developers to customize their docs.
+4. **Better migration tools** -- Make it painless to switch from Mintlify, Docusaurus, or other platforms.
+5. **Monorepo documentation** -- Support for documenting multiple packages in a single monorepo with shared navigation and cross-linking.
+
+---
+
+## How to Influence the Roadmap
+
+Lito is a community-driven project. Here's how you can help shape what gets built next:
+
+<CardGroup>
+  <Card title="GitHub Issues" icon="lucide:github" href="https://github.com/Lito-docs/cli/issues">
+    Open a feature request or upvote existing ones. Issues with the most engagement get prioritized.
+  </Card>
+  <Card title="Discord" icon="lucide:message-circle" href="https://discord.gg/litodocs">
+    Join the Discord server to discuss ideas, share feedback, and connect with other contributors.
+  </Card>
+  <Card title="Contribute Code" icon="lucide:git-pull-request" href="/contributing">
+    The fastest way to see a feature shipped is to build it. Check the contributing guide to get started.
+  </Card>
+  <Card title="Spread the Word" icon="lucide:share-2">
+    Star the repo, share Lito with your team, write about it, or mention it in relevant communities. Growth helps attract more contributors.
+  </Card>
+</CardGroup>

@@ -1,0 +1,148 @@
+---
+title: Contributing
+description: "Learn how to contribute to Lito — from bug reports and documentation improvements to building framework templates and core features"
+keywords:
+  - contribute to lito
+  - open source contribution
+  - lito development
+  - framework templates
+author: Lito Team
+publishDate: "2026-01-04"
+modifiedDate: "2026-02-12"
+readingTime: 5
+tags:
+  - community
+  - contributing
+section: Community
+---
+
+# Contributing to Lito
+
+We're glad you're interested in contributing to Lito. Whether you're fixing a typo, reporting a bug, or building an entire framework template, every contribution matters and helps make documentation better for everyone.
+
+Lito is an open-source project and we welcome contributions of all sizes. This guide will help you get started.
+
+---
+
+## Ways to Contribute
+
+<CardGroup>
+  <Card title="Bug Reports" icon="lucide:bug">
+    Found something broken? Open a GitHub issue with steps to reproduce, expected behavior, and your environment details. Good bug reports save everyone time.
+  </Card>
+  <Card title="Documentation" icon="lucide:book-open">
+    Improve existing docs, fix typos, add examples, or write new guides. Documentation contributions are one of the most impactful ways to help.
+  </Card>
+  <Card title="Framework Templates" icon="lucide:layout">
+    Help bring Lito to React, Next.js, Vue, and Nuxt. The Astro template is production-ready and serves as the reference implementation for other frameworks.
+  </Card>
+  <Card title="Core Features" icon="lucide:code">
+    Contribute to the CLI, add new MDX components, improve the build pipeline, or work on planned features from the roadmap.
+  </Card>
+</CardGroup>
+
+---
+
+## Framework Templates Need Your Help
+
+The Astro template is production-ready with 20+ MDX components, full theming, search, and API documentation support. The other framework templates are at various stages and need community contributors to reach parity.
+
+| Template | Status | Repository | What's Needed |
+| :--- | :--- | :--- | :--- |
+| **Astro** | Production Ready | [lito-astro-template](https://github.com/Lito-docs/lito-astro-template) | Bug fixes, new components |
+| **React** | In Progress | [lito-react-template](https://github.com/Lito-docs/lito-react-template) | MDX components, sidebar, search |
+| **Next.js** | In Progress | [lito-next-template](https://github.com/Lito-docs/lito-next-template) | MDX components, sidebar, search |
+| **Vue** | Early Stage | [lito-vue-template](https://github.com/Lito-docs/lito-vue-template) | Core layout, components, routing |
+| **Nuxt** | Early Stage | [lito-nuxt-template](https://github.com/Lito-docs/lito-nuxt-template) | Core layout, components, routing |
+
+Each template shares the same design system (`theme.css`) so the visual output is consistent across frameworks. The main work involves porting the Astro components and layouts to each framework's conventions.
+
+> [!TIP]
+> Pick the framework you know best and start by porting a few core components (Card, Tabs, Steps, Accordion). The Astro template source code serves as the reference implementation.
+
+---
+
+## Development Setup
+
+<Steps>
+  <Step title="Fork the repository">
+    Fork the repo you want to work on from [github.com/Lito-docs](https://github.com/Lito-docs). For CLI work, fork [lito](https://github.com/Lito-docs/cli). For template work, fork the relevant template repo.
+  </Step>
+  <Step title="Clone your fork">
+    ```bash
+    git clone https://github.com/your-username/cli.git
+    cd cli
+    ```
+  </Step>
+  <Step title="Install dependencies with pnpm">
+    Lito uses pnpm as its package manager. Install dependencies for the project you're working on:
+
+    ```bash
+    pnpm install
+    ```
+  </Step>
+  <Step title="Start the dev server">
+    For CLI development, test against the sample docs:
+
+    ```bash
+    node bin/cli.js dev -i ../sample-docs
+    ```
+
+    For template development, run the template directly:
+
+    ```bash
+    pnpm dev
+    ```
+  </Step>
+  <Step title="Make your changes">
+    Create a new branch, make your changes, and test them thoroughly. Run `lito build -i ../sample-docs` to verify production builds work correctly.
+  </Step>
+</Steps>
+
+---
+
+## Code Style Guidelines
+
+- Use **pnpm** for all package management
+- Follow existing code patterns and naming conventions in the codebase
+- CSS uses **Tailwind v4** with OKLCH color space and `@theme inline` blocks
+- MDX components should use theme-aware CSS variables (`--primary-*`, `--gray-*`, semantic tokens) rather than hardcoded colors
+- Keep components accessible: use semantic HTML, ARIA attributes, and keyboard navigation where appropriate
+- Write clear, concise commit messages that describe what changed and why
+
+---
+
+## Pull Request Process
+
+<Steps>
+  <Step title="Create a branch">
+    Branch from `main` with a descriptive name: `feat/vue-card-component`, `fix/sidebar-scroll`, or `docs/update-installation`.
+  </Step>
+  <Step title="Make focused changes">
+    Keep PRs focused on a single concern. Smaller PRs are easier to review and merge. If you're making unrelated changes, split them into separate PRs.
+  </Step>
+  <Step title="Test your changes">
+    Run the dev server and verify your changes work. For CLI changes, test both `dev` and `build` commands. For template changes, check light and dark mode, mobile responsiveness, and accessibility.
+  </Step>
+  <Step title="Write a clear PR description">
+    Describe what you changed, why, and include screenshots for visual changes. Reference any related GitHub issues.
+  </Step>
+  <Step title="Submit and iterate">
+    Open the PR against `main`. A maintainer will review it and may request changes. Don't worry if revisions are needed -- that's a normal part of the process.
+  </Step>
+</Steps>
+
+---
+
+## Questions?
+
+<Callout type="info" title="Join the community">
+  Have questions about contributing, need help getting started, or want to discuss a feature idea? Join the [Lito Discord server](https://discord.gg/litodocs) -- we're happy to help. You can also open a [GitHub Discussion](https://github.com/Lito-docs/cli/discussions) for longer-form conversations.
+</Callout>
+
+## Related Resources
+
+- [Roadmap](/roadmap) -- See what's planned and where help is most needed
+- [FAQ](/faq) -- Common questions about Lito
+- [Architecture](/concepts/architecture) -- Understand how Lito works under the hood
+- [Components Reference](/reference/components) -- Full list of available MDX components

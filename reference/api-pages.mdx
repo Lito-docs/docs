@@ -1,6 +1,19 @@
 ---
 title: API Reference Pages
-description: Generate individual pages for each API endpoint from OpenAPI specs
+description: "Auto-generate individual API documentation pages from OpenAPI specs with two-column layout, interactive playground, and code generation"
+keywords:
+  - api reference pages
+  - openapi documentation
+  - api page generation
+  - swagger docs
+author: Lito Team
+publishDate: "2026-01-04"
+modifiedDate: "2026-02-10"
+readingTime: 5
+tags:
+  - reference
+  - api
+section: Reference
 ---
 
 # API Reference Pages
@@ -28,11 +41,11 @@ Create a file `api/[...slug].astro` in your pages directory:
 
 ```astro
 ---
-import EndpointPage from '@superdocs/components/api/EndpointPage.astro';
+import EndpointPage from '@litodocs/components/api/EndpointPage.astro';
 import {
   parseOpenAPIFile,
   generateEndpointPaths,
-} from '@superdocs/utils/openapi';
+} from '@litodocs/utils/openapi';
 import { resolve } from 'path';
 
 // Path to your OpenAPI spec
@@ -129,7 +142,7 @@ The `openapi.ts` utility provides these functions:
 <Tabs>
   <Tab title="parseOpenAPIFile">
     ```typescript
-    import { parseOpenAPIFile } from '@superdocs/utils/openapi';
+    import { parseOpenAPIFile } from '@litodocs/utils/openapi';
 
     // Parse an OpenAPI spec from a file
     const spec = await parseOpenAPIFile('./openapi.yaml');
@@ -138,7 +151,7 @@ The `openapi.ts` utility provides these functions:
 
   <Tab title="generateEndpointPaths">
     ```typescript
-    import { generateEndpointPaths } from '@superdocs/utils/openapi';
+    import { generateEndpointPaths } from '@litodocs/utils/openapi';
 
     // Generate static paths for all endpoints
     const paths = generateEndpointPaths(spec);
@@ -148,7 +161,7 @@ The `openapi.ts` utility provides these functions:
 
   <Tab title="getEndpointBySlug">
     ```typescript
-    import { getEndpointBySlug } from '@superdocs/utils/openapi';
+    import { getEndpointBySlug } from '@litodocs/utils/openapi';
 
     // Find an endpoint by its generated slug
     const endpoint = getEndpointBySlug(spec, 'get-users-id');
@@ -157,7 +170,7 @@ The `openapi.ts` utility provides these functions:
 
   <Tab title="groupEndpointsByTag">
     ```typescript
-    import { groupEndpointsByTag } from '@superdocs/utils/openapi';
+    import { groupEndpointsByTag } from '@litodocs/utils/openapi';
 
     // Group endpoints by their OpenAPI tags
     const groups = groupEndpointsByTag(spec);
@@ -184,7 +197,7 @@ Use `groupEndpointsByTag` to create a navigation sidebar:
 
 ```astro
 ---
-import { groupEndpointsByTag, generateEndpointSlug } from '@superdocs/utils/openapi';
+import { groupEndpointsByTag, generateEndpointSlug } from '@litodocs/utils/openapi';
 
 const groups = groupEndpointsByTag(spec);
 ---

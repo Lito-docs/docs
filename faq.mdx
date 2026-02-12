@@ -1,0 +1,137 @@
+---
+title: FAQ
+description: "Frequently asked questions about Lito — installation, configuration, framework support, deployment, and migration from other doc tools"
+keywords:
+  - lito faq
+  - frequently asked questions
+  - lito help
+  - lito troubleshooting
+author: Lito Team
+publishDate: "2026-01-04"
+modifiedDate: "2026-02-12"
+readingTime: 4
+tags:
+  - help
+  - faq
+section: Community
+---
+
+# Frequently Asked Questions
+
+Find answers to common questions about Lito. If your question isn't covered here, join the [Discord server](https://discord.gg/litodocs) or open a [GitHub Discussion](https://github.com/Lito-docs/cli/discussions).
+
+---
+
+## General
+
+<Accordion title="What is Lito?">
+  Lito is an open-source documentation site generator that turns Markdown and MDX files into beautiful, production-ready documentation websites. It's designed as a free alternative to tools like Mintlify, with a CLI-first workflow and support for multiple frontend frameworks. Learn more on the [What is Lito?](/introduction/what-is-lito) page.
+</Accordion>
+
+<Accordion title="Is Lito free?">
+  Yes, Lito is completely free and open-source under the MIT license. There are no paid tiers, usage limits, or vendor lock-in. You own your documentation and can deploy it anywhere.
+</Accordion>
+
+<Accordion title="How is Lito different from Mintlify?">
+  Mintlify is a hosted, closed-source documentation platform with a monthly subscription. Lito is open-source, self-hosted, and free. You get similar features -- beautiful design, MDX components, API documentation, search -- without the ongoing cost or vendor dependency. Lito also supports multiple frontend frameworks, not just one.
+</Accordion>
+
+<Accordion title="How is Lito different from Docusaurus?">
+  Docusaurus is a great tool, but it's tightly coupled to React and requires more configuration to achieve a polished look. Lito is designed to work with multiple frameworks (Astro, React, Next.js, Vue, Nuxt), comes with a professional design system out of the box, and has a simpler CLI-driven workflow. You write Markdown and get a beautiful site with zero config.
+</Accordion>
+
+---
+
+## Installation
+
+<Accordion title="What are the system requirements?">
+  You need **Node.js 18.0.0 or higher** and a package manager (npm, yarn, pnpm, or bun). That's it. Lito works on macOS, Linux, and Windows. See the [Installation](/getting-started/installation) guide for details.
+</Accordion>
+
+<Accordion title="Can I use npm, yarn, or bun instead of pnpm?">
+  Yes. Lito auto-detects your package manager. While the project itself uses pnpm for development, the CLI works with npm, yarn, pnpm, and bun. Use whichever you prefer -- `npx @litodocs/cli dev` works without installing anything globally.
+</Accordion>
+
+<Accordion title="Do I need to install Lito globally?">
+  No. You can use `npx @litodocs/cli` to run any command without a global install. If you prefer having the `lito` command available everywhere, install globally with `npm install -g @litodocs/cli`. Both approaches work the same way.
+</Accordion>
+
+---
+
+## Frameworks
+
+<Accordion title="Which frameworks does Lito support?">
+  Lito supports five frameworks: **Astro**, **React** (React Router), **Next.js**, **Vue**, and **Nuxt**. The Astro template is production-ready with 20+ MDX components, full search, and API documentation. The other templates are in active development and welcome community contributions. See the [Roadmap](/roadmap) for current status.
+</Accordion>
+
+<Accordion title="Can I use React or Vue for my docs?">
+  You can, but be aware that the React, Next.js, Vue, and Nuxt templates are not yet at feature parity with the Astro template. They are community-driven efforts that need contributors. If you want the most complete experience today, use the default Astro template. If you'd like to help build a template for your preferred framework, check the [Contributing](/contributing) guide.
+</Accordion>
+
+<Accordion title="Can I create a custom template?">
+  Yes. You can use any Git repository or local directory as a template with the `--template` flag: `lito dev -i ./docs --template github:owner/repo` or `--template ./local-path`. Custom templates need a framework config file, a `package.json`, and a `src/` or `app/` directory. See the [CLI Commands](/reference/cli-commands) reference for details.
+</Accordion>
+
+<Accordion title="Why is Astro the default framework?">
+  Astro is ideal for documentation because it ships zero JavaScript by default, resulting in extremely fast page loads. It has first-class MDX support, an excellent content layer, and a mature ecosystem. Since documentation sites are primarily static content, Astro's architecture is a natural fit.
+</Accordion>
+
+---
+
+## Configuration
+
+<Accordion title="How do I customize the theme colors?">
+  Add a `branding.colors` section to your `docs-config.json` with `primary`, `secondary`, `accent`, `background`, and `text` color values. Lito uses these to generate a complete OKLCH color palette automatically. See the [Customizing Theme](/guides/customizing-theme) guide for all available options.
+</Accordion>
+
+<Accordion title="Can I use custom CSS?">
+  Yes. Place CSS files in a `_css` folder within your docs directory and they will be included in your site. You can override any theme variable or add entirely new styles. The design system uses CSS custom properties so you can target specific tokens without fighting the framework.
+</Accordion>
+
+<Accordion title="How do I add navigation?">
+  Navigation is configured in the `navigation.sidebar` array in `docs-config.json`. Each group has a `label` and an `items` array of pages. You can nest groups, add icons, and configure the navbar, anchors, and footer separately. See the [Configuration](/reference/configuration) reference for the full schema.
+</Accordion>
+
+<Accordion title="How do I add a custom landing page?">
+  Create a `_landing/` folder in your docs directory with an `index.html` file and optional `styles.css` and `script.js`. Set `"landing": { "type": "custom", "source": "_landing" }` in your `docs-config.json`. You can also use section-based landing pages that mix custom HTML with default components. See the [Custom Landing Pages](/guides/custom-landing) guide.
+</Accordion>
+
+---
+
+## Deployment
+
+<Accordion title="Where can I deploy a Lito site?">
+  Anywhere that hosts static sites. Lito generates plain HTML, CSS, and JS files. Popular options include **Vercel**, **Netlify**, **Cloudflare Pages**, and **GitHub Pages**. Lito has built-in provider optimizations for Vercel, Netlify, and Cloudflare that generate the correct configuration files automatically. See the [Deployment](/guides/deploying) guide.
+</Accordion>
+
+<Accordion title="How do I set up CI/CD for my docs?">
+  Add a build step to your CI pipeline that runs `npx @litodocs/cli build -i ./docs`. The output goes to a `dist` folder by default. For GitHub Actions, use the workflow example in the [Deployment](/guides/deploying) guide. For other CI providers, the process is similar -- install Node.js, run the build command, and deploy the output directory.
+</Accordion>
+
+<Accordion title="Does Lito support server-side rendering?">
+  By default, Lito generates a fully static site. However, if you need SSR (for example, on Cloudflare Workers), you can use the `--rendering server` flag with the Cloudflare provider: `lito build -i ./docs --provider cloudflare --rendering server`. The Astro template supports both static and server output modes.
+</Accordion>
+
+---
+
+## Migration
+
+<Accordion title="Can I migrate from Mintlify?">
+  Yes. Since Mintlify uses MDX, most of your content will work with Lito directly. You'll need to update your configuration from `mint.json` to `docs-config.json` and replace Mintlify-specific components with Lito equivalents (they are very similar). Navigation structure, frontmatter, and most MDX components map closely between the two. Automated migration tooling is on the [Roadmap](/roadmap).
+</Accordion>
+
+<Accordion title="Can I migrate from Docusaurus?">
+  Yes, with some manual adjustments. Docusaurus MDX files are compatible, but you'll need to convert `sidebars.js` to `docs-config.json` navigation format and replace Docusaurus-specific components (like `@theme/Tabs`) with Lito's auto-imported equivalents. The frontmatter is mostly compatible. Automated migration scripts are planned -- see the [Roadmap](/roadmap).
+</Accordion>
+
+<Accordion title="Can I migrate from GitBook or other tools?">
+  If your existing tool uses Markdown or MDX, migration is straightforward. Copy your content files, create a `docs-config.json` for navigation and branding, and run `lito dev`. For tools that use proprietary formats, you may need to export to Markdown first. Join the [Discord](https://discord.gg/litodocs) if you need help with a specific migration path.
+</Accordion>
+
+---
+
+## Still have questions?
+
+<Callout type="tip" title="Get help">
+  Check the [Discord server](https://discord.gg/litodocs) for real-time help, browse [GitHub Discussions](https://github.com/Lito-docs/cli/discussions) for longer conversations, or run `lito doctor -i ./docs` to diagnose common issues locally.
+</Callout>

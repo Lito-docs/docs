@@ -1,6 +1,19 @@
 ---
 title: Custom Landing Pages
-description: Create stunning landing pages with full HTML/CSS/JS control.
+description: "Build custom landing pages for your Lito docs site with full HTML, CSS, and JavaScript control or use config-based and section-based layouts"
+keywords:
+  - custom landing page
+  - landing page design
+  - html landing page
+  - section based landing
+author: Lito Team
+publishDate: "2026-01-04"
+modifiedDate: "2026-02-10"
+readingTime: 6
+tags:
+  - guides
+  - landing-page
+section: Guides
 ---
 
 # Custom Landing Pages
@@ -309,14 +322,82 @@ var(--font-mono)
 
 This ensures your landing page matches the rest of your documentation site.
 
+## Custom Navbar and Footer
+
+By default, Lito renders the site's Header and Footer components on landing pages. You can replace them with custom HTML or hide them entirely.
+
+### Custom HTML Navbar/Footer
+
+Place files in your `_landing/` folder:
+
+```
+docs/
+├── _landing/
+│   ├── index.html       # Main landing content
+│   ├── navbar.html      # Custom navbar (replaces default Header)
+│   ├── footer.html      # Custom footer (replaces default Footer)
+│   ├── styles.css
+│   └── script.js
+```
+
+Or specify paths in config:
+
+```json
+{
+  "landing": {
+    "type": "custom",
+    "navbar": { "html": "_landing/navbar.html" },
+    "footer": { "html": "_landing/footer.html" }
+  }
+}
+```
+
+Accepted navbar file names: `navbar.html`, `nav.html`, `header.html`.
+
+### Hiding Navbar and Footer
+
+Set `navbar` or `footer` to `false` to completely remove them from the landing page. This is useful when your custom landing has its own navigation built in.
+
+```json
+{
+  "landing": {
+    "type": "custom",
+    "navbar": false,
+    "footer": false
+  }
+}
+```
+
+You can mix and match — hide one while keeping the other:
+
+```json
+{
+  "landing": {
+    "type": "custom",
+    "navbar": false,
+    "footer": { "html": "_landing/footer.html" }
+  }
+}
+```
+
+| Value | Behavior |
+| :--- | :--- |
+| Omitted | Default Header/Footer component renders |
+| `{ "html": "..." }` | Custom HTML replaces the default component |
+| `false` | No navbar/footer rendered at all |
+
+<Alert type="info">
+  This works with both `custom` and `sections` landing types.
+</Alert>
+
 ## Configuration Options
 
 | Option | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `type` | `string` | `config` | `custom`, `sections`, `config`, `default`, `none` |
 | `source` | `string` | `_landing` | Folder containing custom landing files |
-| `injectNav` | `boolean` | `true` | Include the site navigation bar |
-| `injectFooter` | `boolean` | `true` | Include the site footer |
+| `navbar` | `object \| false` | — | Custom navbar HTML or `false` to hide |
+| `footer` | `object \| false` | — | Custom footer HTML or `false` to hide |
 
 ## Disabling the Landing Page
 
