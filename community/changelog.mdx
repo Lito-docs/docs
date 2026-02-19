@@ -21,6 +21,18 @@ section: Introduction
 All notable changes to this project will be documented on this page.
 
 <Changelog>
+  <ChangelogEntry version="1.3.1" date="2026-02-19" type="minor">
+    <ChangelogItem type="added">
+      Custom font support — configure heading, body, and code fonts via `branding.fonts` in `docs-config.json`
+    </ChangelogItem>
+    <ChangelogItem type="added">
+      Dynamic Google Fonts loading — fonts are fetched based on your config, no template changes needed
+    </ChangelogItem>
+    <ChangelogItem type="changed">
+      Landing page templates now use dynamic font loading instead of hardcoded font links
+    </ChangelogItem>
+  </ChangelogEntry>
+
   <ChangelogEntry version="1.0.0" date="2026-02-10" type="major" badge="Stable">
     <ChangelogItem type="added">
       Dual publishing to npm and GitHub Packages
