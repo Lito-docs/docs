@@ -444,6 +444,29 @@ Browse all available icons at [icon-sets.iconify.design](https://icon-sets.iconi
 
 ---
 
+## LinkCard
+
+A compact card designed for single-link references. Shows an optional icon, title, description, and a directional arrow.
+
+```jsx
+<LinkCard title="Getting Started" href="/getting-started/installation" description="Learn how to install and set up Lito" />
+
+<LinkCard title="GitHub Repository" href="https://github.com/Lito-docs/cli" icon="fa6-brands:github" description="View the source code" />
+```
+
+<LinkCard title="Getting Started" href="/getting-started/installation" description="Learn how to install and set up Lito" />
+
+<LinkCard title="GitHub Repository" href="https://github.com/Lito-docs/cli" icon="fa6-brands:github" description="View the source code" />
+
+| Prop | Type | Description |
+| :--- | :--- | :--- |
+| `title` | `string` | Card title (required). |
+| `href` | `string` | Link URL (required). |
+| `description` | `string` | Optional description text. |
+| `icon` | `string` | Iconify icon name or emoji (optional). |
+
+---
+
 ## API Documentation Components
 
 For documenting APIs, see the dedicated [API Reference](/reference/api) page which covers:

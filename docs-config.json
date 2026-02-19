@@ -18,6 +18,11 @@
       "accent": "#fbbf24",
       "background": "#fffbeb",
       "text": "#7c2d12"
+    },
+    "fonts": {
+      "heading": "Syne",
+      "body": "Syne",
+      "code": "Fira Code"
     }
   },
   "navigation": {
