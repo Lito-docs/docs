@@ -1,111 +1,293 @@
-<div class="landing-hero">
-  <div class="hero-content">
-    <div class="hero-eyebrow">
-      <span class="version-badge">v1.0.0</span>
-      <span class="eyebrow-text">Open Source</span>
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-wrap">
+    <div class="hero-badge" data-reveal>
+      <span class="badge-dot"></span>
+      Open Source &middot; MIT License
     </div>
-    <h1 class="hero-title">
-      Documentation that<br>
-      developers actually love
+    <h1 class="hero-h1" data-reveal>
+      Ship beautiful docs in <em>minutes</em>
     </h1>
-    <p class="hero-subtitle">
-      Lito turns your Markdown into beautiful, searchable documentation sites. Zero config, blazing fast, fully customizable.
+    <p class="hero-sub" data-reveal>
+      Lito is the open-source Mintlify alternative. Write Markdown, get a stunning
+      documentation site with search, components, and multi-framework support.
     </p>
-    <div class="hero-buttons">
-      <a href="/introduction" class="btn btn-primary">
+    <div class="hero-actions" data-reveal>
+      <a href="/getting-started/installation" class="btn-primary">
         Get Started
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>
-      <a href="https://github.com/Lito-docs/cli" class="btn btn-secondary" target="_blank" rel="noopener">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-        View on GitHub
+      <a href="https://github.com/Lito-docs/cli" class="btn-outline" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        Star on GitHub
       </a>
     </div>
-    <div class="hero-install">
-      <div class="install-code">
-        <span class="install-prompt">$</span>
-        <code>npx lito init</code>
-        <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy command">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-        </button>
+    <div class="hero-terminal" data-reveal>
+      <div class="term-chrome">
+        <div class="term-dots"><span style="background:#ff5f56"></span><span style="background:#ffbd2e"></span><span style="background:#27c93f"></span></div>
+        <span class="term-title">Terminal</span>
+        <span class="term-spacer"></span>
       </div>
-    </div>
-  </div>
-</div>
-
-<section class="features-section">
-  <div class="features-inner">
-    <div class="section-header">
-      <h2>Everything you need for great docs</h2>
-      <p>Built for developers who value simplicity and speed.</p>
-    </div>
-
-    <div class="features-grid">
-      <div class="feature-card" data-animate>
-        <div class="feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
-        </div>
-        <h3>Zero Config</h3>
-        <p>Start with a single JSON file. No complex setup, no build tools to configure.</p>
-      </div>
-
-      <div class="feature-card" data-animate>
-        <div class="feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
-        </div>
-        <h3>20+ MDX Components</h3>
-        <p>Callouts, tabs, cards, code groups, accordions, and more — all built in.</p>
-      </div>
-
-      <div class="feature-card" data-animate>
-        <div class="feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        </div>
-        <h3>Full-Text Search</h3>
-        <p>Lightning-fast search powered by Pagefind. Works offline, no server needed.</p>
-      </div>
-
-      <div class="feature-card" data-animate>
-        <div class="feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 6.1H3"/><path d="M21 12.1H3"/><path d="M15.1 18H3"/></svg>
-        </div>
-        <h3>API Documentation</h3>
-        <p>OpenAPI integration for beautiful, interactive API reference pages.</p>
-      </div>
-
-      <div class="feature-card" data-animate>
-        <div class="feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 0 1 9-9"/></svg>
-        </div>
-        <h3>i18n Ready</h3>
-        <p>Built-in internationalization for multilingual documentation sites.</p>
-      </div>
-
-      <div class="feature-card" data-animate>
-        <div class="feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-        </div>
-        <h3>Dark Mode</h3>
-        <p>Beautiful light and dark themes with smooth transitions. System-aware.</p>
+      <div class="term-body">
+        <div class="term-line"><span class="t-p">~</span> <span class="t-t" id="typed"></span><span class="t-c" id="cursor">|</span></div>
+        <div class="term-line term-out" id="o1"><span class="t-ok">&#10003;</span> <span class="t-d">Creating project...</span></div>
+        <div class="term-line term-out" id="o2"><span class="t-ok">&#10003;</span> <span class="t-d">Installing dependencies...</span></div>
+        <div class="term-line term-out" id="o3"><span class="t-ok">&#10003;</span> <span class="t-brand">Your docs are ready!</span> <span class="t-d">&rarr; localhost:4321</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="cta-section">
-  <div class="cta-inner">
-    <div class="cta-content">
-      <h2>Start building in minutes</h2>
-      <p>Join developers who ship better docs, faster.</p>
-      <div class="cta-actions">
-        <a href="/getting-started/installation" class="btn btn-primary">
-          Read the docs
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
-        <a href="https://github.com/Lito-docs/cli" class="btn btn-ghost" target="_blank" rel="noopener">
-          Star on GitHub
-        </a>
+<!-- ============ FRAMEWORKS ============ -->
+<section class="fw-section">
+  <div class="fw-inner" data-reveal>
+    <span class="fw-label">Works with your favorite framework</span>
+    <div class="fw-list">
+      <span class="fw-chip">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8.358 20.162c-1.186-1.07-1.532-3.316-1.038-5.156.003-.012.007-.023.011-.035l.001-.005c.028-.113.085-.218.13-.338.046-.12.086-.242.138-.36l.003-.003c.067-.16.134-.315.206-.477.023-.053.047-.102.071-.154l.041-.09.002-.006.002-.002c.015-.033.03-.065.046-.098l.158-.327c.063-.124.129-.245.197-.367l.12-.218c.005-.008.009-.017.013-.025a77.604 77.604 0 011.147-1.888l.182-.282c.028-.043.058-.085.088-.13.02-.029.039-.06.059-.089l.123-.183c.02-.03.04-.059.059-.089.07-.107.139-.211.207-.312l.037-.056c.048-.071.096-.14.143-.21.056-.082.112-.162.167-.242l.071-.101c.057-.081.113-.161.168-.24l.103-.146.081-.112c.057-.08.112-.159.166-.235.089-.124.175-.245.26-.364l.164-.228.135-.185.093-.125c.058-.079.117-.157.173-.233l.035-.047a2.252 2.252 0 01.096-.127l.018-.022c.033-.044.066-.087.098-.13l.019-.024c.025-.033.049-.065.073-.097l.044-.058c.013-.017.027-.034.04-.051.028-.036.055-.071.082-.106l.03-.039c.032-.04.063-.078.094-.117l.015-.018.015-.018.077-.096.012-.015c.02-.024.039-.049.059-.073l.065-.079.044-.054a2.255 2.255 0 01.075-.09c.013-.014.025-.028.037-.042l.066-.078.028-.033.07-.082.01-.011.02-.024.03-.034.05-.058.018-.019.033-.039.013-.014.044-.052.047-.054.014-.015.013-.016.015-.017.014-.015.007-.008.039-.045.01-.012.001-.001.041-.047.003-.003.037-.042.002-.003.009-.01.028-.033.015-.017.006-.007.006-.007.016-.018.003-.003.009-.01.006-.007.012-.013.006-.007.003-.004.003-.003.003-.004.003-.003.012-.013L12 .003l.062.073c.016.018.033.037.05.057l.036.041.002.002.039.046.002.003.003.003.003.003.003.004.003.003.006.007.012.013.006.007.009.01.003.003.016.018.006.007.006.007.015.017.028.033.009.01.002.003.037.042.003.003.041.047.001.001.01.012.039.045.007.008.014.015.015.017.013.016.014.015.047.054.044.052.013.014.033.039.018.019.05.058.03.034.02.024.01.011.07.082.028.033.066.078.037.042c.025.03.05.06.075.09l.044.054.065.079c.02.024.039.049.059.073l.012.015.077.096.015.018.015.018.094.117.03.039.082.106c.013.017.027.034.04.051l.044.058.073.097.019.024.098.13.018.022.096.127.035.047c.056.076.115.154.173.233l.093.125.135.185.164.228c.085.119.171.24.26.364.054.076.109.155.166.235l.081.112.103.146c.055.079.111.159.168.24l.071.101c.055.08.111.16.167.242.047.07.095.139.143.21l.037.056c.068.101.137.205.207.312.019.03.039.059.059.089l.123.183c.02.029.039.06.059.089.03.045.06.087.088.13l.182.282a77.604 77.604 0 011.147 1.888l.013.025.12.218c.068.122.134.243.197.367l.158.327c.016.033.031.065.046.098l.002.002.002.006.041.09c.024.052.048.101.071.154.072.162.139.317.206.477l.003.003c.052.118.092.24.138.36.045.12.102.225.13.338l.001.005c.004.012.008.023.011.035.494 1.84.148 4.086-1.038 5.156-.652.588-1.422.86-2.249.86-.744 0-1.532-.225-2.328-.668-.567-.315-1.137-.724-1.7-1.22a21.088 21.088 0 01-.62-.58l-.055-.054-.048-.048-.067-.067c-.063-.064-.11-.113-.132-.137l-.014-.014-.014.014c-.022.024-.069.073-.132.137l-.067.067-.048.048-.055.054c-.204.198-.41.393-.62.58-.563.496-1.133.905-1.7 1.22-.796.443-1.584.668-2.328.668-.827 0-1.597-.272-2.249-.86z"/></svg>
+        Astro
+      </span>
+      <span class="fw-chip">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.541-2.602-4.887-2.602-.31 0-.592.068-.845.2C4.95 2.23 4.42 3.94 4.86 6.262c-2.16.57-3.56 1.46-3.56 2.584 0 1.124 1.4 2.013 3.56 2.584-.44 2.322.09 4.032 1.398 4.73.253.132.535.2.845.2 1.346 0 3.107-.96 4.888-2.624 1.78 1.664 3.541 2.624 4.887 2.624.31 0 .592-.068.845-.2 1.308-.698 1.838-2.408 1.398-4.73 2.16-.57 3.56-1.46 3.56-2.584 0-1.124-1.4-2.013-3.56-2.584.44-2.322-.09-4.032-1.398-4.729a1.6 1.6 0 0 0-.845-.2zM12 16.92a10.3 10.3 0 0 1-1.26-1.31 16.8 16.8 0 0 0 1.26-.126c.424.044.838.078 1.26.126a10.3 10.3 0 0 1-1.26 1.31z"/></svg>
+        React
+      </span>
+      <span class="fw-chip">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.615V9.251l9.85 12.727z"/></svg>
+        Next.js
+      </span>
+      <span class="fw-chip">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 13.616s-2.693-3.165-5.508-3.165a2.795 2.795 0 00-1.077.207c-.26.098-.49.2-.715.304l-.12.058-.104.052c-.265.14-.475.261-.666.373a1.92 1.92 0 01-.22.115c-.018.01-.037.02-.055.028l-.086-.166a1.83 1.83 0 00-.034-.062c-.05-.09-.105-.175-.165-.26-.127-.176-.277-.345-.465-.497a2.62 2.62 0 00-.26-.185 3.36 3.36 0 00-.364-.198C13.453 9.882 12.723 9.803 12 9.803s-1.453.08-2.16.217a3.36 3.36 0 00-.365.198 2.62 2.62 0 00-.26.185c-.188.152-.338.32-.465.497-.06.085-.115.17-.165.26a1.83 1.83 0 00-.034.062l-.086.166a.72.72 0 01-.055-.028 1.92 1.92 0 01-.22-.115c-.191-.112-.401-.233-.666-.373l-.104-.052-.12-.058a7.15 7.15 0 00-.715-.304 2.795 2.795 0 00-1.077-.207C2.694 10.451 0 13.616 0 13.616s2.694 3.166 5.509 3.166c.382 0 .739-.062 1.077-.207.26-.098.49-.2.715-.304l.12-.058.104-.052c.265-.14.475-.261.666-.373.075-.04.15-.078.22-.115.018-.01.037-.02.055-.028l.086.166c.01.022.022.042.034.062.05.09.105.175.165.26.127.176.277.345.465.497.085.066.17.13.26.185.118.068.24.135.364.198.708.137 1.438.217 2.16.217s1.453-.08 2.16-.217a3.36 3.36 0 00.365-.198c.09-.055.175-.12.26-.185.188-.152.338-.32.465-.497.06-.085.115-.17.165-.26.012-.02.024-.04.034-.062l.086-.166c.018.008.037.018.055.028.07.037.145.075.22.115.191.112.401.233.666.373l.104.052.12.058c.225.104.455.206.715.304a2.795 2.795 0 001.077.207c2.815 0 5.509-3.166 5.509-3.166z"/></svg>
+        Vue
+      </span>
+      <span class="fw-chip">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.464 24l5.091-13.873H15.16L12.005 20.25 8.85 10.127H5.445L10.543 24h2.921zM0 0l4.222 11.566H7.6L3.387 0H0zm16.41 0l-4.222 11.566h3.378L19.797 0H16.41z"/></svg>
+        Nuxt
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURE SHOWCASE ============ -->
+<section class="showcase">
+  <div class="showcase-inner">
+    <span class="section-tag" data-reveal>Why Lito</span>
+    <h2 class="section-h2" data-reveal>Everything you need, nothing you don't</h2>
+    <div class="showcase-grid">
+      <!-- Card 1: Zero Config -->
+      <div class="show-card" data-reveal>
+        <div class="show-card-top">
+          <div class="show-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg></div>
+          <h3>Zero Config</h3>
+          <p>One command. One JSON file. Your docs are live in under a minute. No webpack, no bundlers, no pipeline to maintain.</p>
+        </div>
+        <div class="show-card-visual">
+          <div class="mini-term">
+            <div class="mini-term-bar"><span></span><span></span><span></span></div>
+            <code><span class="mt-p">$</span> npx @litodocs/cli init</code>
+            <code class="mt-dim">&nbsp; Creating your-docs/</code>
+            <code class="mt-dim">&nbsp; Writing docs-config.json</code>
+            <code class="mt-green">&nbsp; Done in 0.8s</code>
+          </div>
+        </div>
       </div>
+      <!-- Card 2: Components -->
+      <div class="show-card" data-reveal>
+        <div class="show-card-top">
+          <div class="show-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg></div>
+          <h3>20+ MDX Components</h3>
+          <p>Callouts, tabs, cards, code groups, accordions, steps, API blocks, and more. All auto-imported and ready to use.</p>
+        </div>
+        <div class="show-card-visual">
+          <div class="comp-tags">
+            <span class="ct ct-orange">Alert</span>
+            <span class="ct ct-blue">Tabs</span>
+            <span class="ct ct-green">Card</span>
+            <span class="ct ct-purple">Steps</span>
+            <span class="ct ct-pink">CodeGroup</span>
+            <span class="ct ct-cyan">Accordion</span>
+            <span class="ct ct-yellow">APIEndpoint</span>
+            <span class="ct ct-red">Badge</span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3: Search -->
+      <div class="show-card" data-reveal>
+        <div class="show-card-top">
+          <div class="show-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+          <h3>Instant Search</h3>
+          <p>Lightning-fast full-text search powered by Pagefind. Works completely offline with zero server cost.</p>
+        </div>
+        <div class="show-card-visual">
+          <div class="mock-search">
+            <div class="ms-bar">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <span>Search documentation...</span>
+              <kbd>&#8984;K</kbd>
+            </div>
+            <div class="ms-results">
+              <div class="ms-result ms-active"><span class="ms-page">Getting Started</span><span class="ms-trail">Installation &rsaquo; Quick Start</span></div>
+              <div class="ms-result"><span class="ms-page">Components</span><span class="ms-trail">Reference &rsaquo; MDX</span></div>
+              <div class="ms-result"><span class="ms-page">Configuration</span><span class="ms-trail">Reference &rsaquo; Config</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CODE COMPARISON ============ -->
+<section class="compare">
+  <div class="compare-inner">
+    <span class="section-tag" data-reveal>How It Works</span>
+    <h2 class="section-h2" data-reveal>Write Markdown. Get beautiful docs.</h2>
+    <p class="section-sub" data-reveal>What you write on the left becomes what your users see on the right.</p>
+    <div class="compare-panels" data-reveal>
+      <!-- Editor panel -->
+      <div class="panel panel-editor">
+        <div class="panel-chrome">
+          <div class="panel-dots"><span style="background:#ff5f56"></span><span style="background:#ffbd2e"></span><span style="background:#27c93f"></span></div>
+          <span class="panel-label">getting-started.mdx</span>
+        </div>
+        <div class="panel-body">
+          <div class="code-lines">
+            <div class="cl"><span class="ln-num"> 1</span><span class="hl-comment">---</span></div>
+            <div class="cl"><span class="ln-num"> 2</span><span><span class="hl-key">title</span><span class="hl-p">:</span> <span class="hl-str">Getting Started</span></span></div>
+            <div class="cl"><span class="ln-num"> 3</span><span class="hl-comment">---</span></div>
+            <div class="cl"><span class="ln-num"> 4</span><span>&nbsp;</span></div>
+            <div class="cl"><span class="ln-num"> 5</span><span class="hl-h1"># Getting Started</span></div>
+            <div class="cl"><span class="ln-num"> 6</span><span>&nbsp;</span></div>
+            <div class="cl"><span class="ln-num"> 7</span><span>Welcome to <span class="hl-bold">Lito</span>! Get your docs</span></div>
+            <div class="cl"><span class="ln-num"> 8</span><span>running in under a minute.</span></div>
+            <div class="cl"><span class="ln-num"> 9</span><span>&nbsp;</span></div>
+            <div class="cl"><span class="ln-num">10</span><span class="hl-tag">&lt;Alert type="tip"&gt;</span></div>
+            <div class="cl"><span class="ln-num">11</span><span>  Run <span class="hl-code">`npx @litodocs/cli dev`</span></span></div>
+            <div class="cl"><span class="ln-num">12</span><span>  to preview locally.</span></div>
+            <div class="cl"><span class="ln-num">13</span><span class="hl-tag">&lt;/Alert&gt;</span></div>
+            <div class="cl"><span class="ln-num">14</span><span>&nbsp;</span></div>
+            <div class="cl"><span class="ln-num">15</span><span class="hl-h2">## Quick Setup</span></div>
+            <div class="cl"><span class="ln-num">16</span><span>&nbsp;</span></div>
+            <div class="cl"><span class="ln-num">17</span><span class="hl-tag">&lt;Steps&gt;</span></div>
+            <div class="cl"><span class="ln-num">18</span><span>  <span class="hl-tag">&lt;Step title="Install"&gt;</span></span></div>
+            <div class="cl"><span class="ln-num">19</span><span>    <span class="hl-code">`npx @litodocs/cli init`</span></span></div>
+            <div class="cl"><span class="ln-num">20</span><span>  <span class="hl-tag">&lt;/Step&gt;</span></span></div>
+            <div class="cl"><span class="ln-num">21</span><span>  <span class="hl-tag">&lt;Step title="Write"&gt;</span></span></div>
+            <div class="cl"><span class="ln-num">22</span><span>    Add your .mdx files</span></div>
+            <div class="cl"><span class="ln-num">23</span><span>  <span class="hl-tag">&lt;/Step&gt;</span></span></div>
+            <div class="cl"><span class="ln-num">24</span><span class="hl-tag">&lt;/Steps&gt;</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- Preview panel -->
+      <div class="panel panel-preview">
+        <div class="panel-chrome panel-chrome-light">
+          <div class="panel-dots"><span style="background:#ff5f56"></span><span style="background:#ffbd2e"></span><span style="background:#27c93f"></span></div>
+          <span class="panel-label">localhost:4321</span>
+        </div>
+        <div class="panel-body panel-body-light">
+          <h4 class="prev-h1">Getting Started</h4>
+          <p class="prev-text">Welcome to <strong>Lito</strong>! Get your docs running in under a minute.</p>
+          <div class="prev-alert">
+            <div class="prev-alert-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <span>Run <code>npx @litodocs/cli dev</code> to preview locally.</span>
+          </div>
+          <h5 class="prev-h2">Quick Setup</h5>
+          <div class="prev-steps">
+            <div class="prev-step"><span class="step-num">1</span><div><strong>Install</strong><br><code>npx @litodocs/cli init</code></div></div>
+            <div class="prev-step"><span class="step-num">2</span><div><strong>Write</strong><br>Add your .mdx files</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENTO FEATURES ============ -->
+<section class="bento">
+  <div class="bento-inner">
+    <span class="section-tag" data-reveal>More Features</span>
+    <h2 class="section-h2" data-reveal>Built for the modern web</h2>
+    <div class="bento-grid">
+      <div class="b-card" data-reveal>
+        <div class="b-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 6.1H3"/><path d="M21 12.1H3"/><path d="M15.1 18H3"/></svg></div>
+        <h3>API Documentation</h3>
+        <p>OpenAPI/Swagger integration for interactive, auto-generated API reference pages.</p>
+      </div>
+      <div class="b-card" data-reveal>
+        <div class="b-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 0 1 9-9"/></svg></div>
+        <h3>i18n Ready</h3>
+        <p>Built-in internationalization for multilingual documentation. Locale routing, translated sidebars.</p>
+      </div>
+      <div class="b-card" data-reveal>
+        <div class="b-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></div>
+        <h3>Dark Mode</h3>
+        <p>Beautiful light and dark themes with system-aware switching and smooth transitions.</p>
+      </div>
+      <div class="b-card" data-reveal>
+        <div class="b-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3v12"/><path d="M18 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M6 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M15 6a9 9 0 0 0-9 9"/></svg></div>
+        <h3>Versioning</h3>
+        <p>Document multiple versions side by side with easy version switching and deprecation banners.</p>
+      </div>
+      <div class="b-card" data-reveal>
+        <div class="b-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+        <h3>Custom Landing Pages</h3>
+        <p>Full HTML/CSS/JS custom landing pages or section-based layouts. Your brand, your way.</p>
+      </div>
+      <div class="b-card" data-reveal>
+        <div class="b-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="2"/><path d="M11 2a2 2 0 0 0-2 2v1a7 7 0 1 0 4 0V4a2 2 0 0 0-2-2z"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+        <h3>SEO Optimized</h3>
+        <p>Auto-generated sitemaps, Open Graph images, JSON-LD, canonical URLs, and meta tags.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats">
+  <div class="stats-inner" data-reveal>
+    <div class="stat">
+      <span class="stat-num">20+</span>
+      <span class="stat-label">MDX Components</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-num">5</span>
+      <span class="stat-label">Frameworks</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-num">&lt;1m</span>
+      <span class="stat-label">Setup Time</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-num">MIT</span>
+      <span class="stat-label">Open Source</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta">
+  <div class="cta-glow"></div>
+  <div class="cta-inner">
+    <h2 class="cta-h2" data-reveal>Ready to ship better docs?</h2>
+    <p class="cta-sub" data-reveal>Get started in minutes. No credit card, no vendor lock-in. Just great docs.</p>
+    <div class="cta-actions" data-reveal>
+      <a href="/getting-started/installation" class="btn-primary btn-lg">
+        Read the Docs
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <a href="https://github.com/Lito-docs/cli" class="btn-outline" target="_blank" rel="noopener">Star on GitHub</a>
+    </div>
+    <div class="cta-install" data-reveal>
+      <code><span class="t-d">$</span> npx @litodocs/cli init</code>
     </div>
   </div>
 </section>

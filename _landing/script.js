@@ -1,43 +1,98 @@
-// Custom Landing Page Scripts
+// Lito Landing Page Scripts
+(function () {
+  // ---- Navbar scroll ----
+  var nav = document.getElementById('ln');
+  var hero = document.querySelector('.hero');
 
-// Intersection Observer for feature card animations
-document.addEventListener('DOMContentLoaded', function() {
-  const cards = document.querySelectorAll('.feature-card[data-animate]');
+  function updateNav() {
+    if (!hero || !nav) return;
+    nav.classList.toggle('scrolled', window.scrollY > hero.offsetHeight - 80);
+  }
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        // Stagger the animation
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, index * 100);
-        observer.unobserve(entry.target);
-      }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
+  // ---- Mobile menu ----
+  var menuBtn = document.getElementById('menuToggle');
+  var mobileMenu = document.getElementById('mobileMenu');
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', function () {
+      var open = mobileMenu.classList.toggle('open');
+      menuBtn.classList.toggle('active', open);
+      menuBtn.setAttribute('aria-expanded', open);
     });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  });
+  }
 
-  cards.forEach(card => observer.observe(card));
-});
+  // ---- Theme toggle ----
+  var themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function () {
+      var isDark = document.documentElement.classList.toggle('dark');
+      document.documentElement.classList.toggle('light', !isDark);
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  }
 
-// Copy code button functionality
-function copyCode(button) {
-  const codeEl = button.previousElementSibling;
-  const text = codeEl.textContent;
+  // ---- Scroll reveals ----
+  var els = document.querySelectorAll('[data-reveal]');
+  // Skip hero children (they use CSS animation)
+  var revealEls = [];
+  for (var i = 0; i < els.length; i++) {
+    if (!els[i].closest('.hero')) revealEls.push(els[i]);
+  }
 
-  navigator.clipboard.writeText(text).then(() => {
-    // Show success feedback
-    const originalHTML = button.innerHTML;
-    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
-    button.style.color = '#22c55e';
+  if (revealEls.length && 'IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        var parent = el.parentElement;
+        var siblings = parent
+          ? Array.prototype.filter.call(parent.children, function (c) { return c.hasAttribute('data-reveal'); })
+          : [el];
+        var idx = siblings.indexOf(el);
+        setTimeout(function () { el.classList.add('revealed'); }, idx * 80);
+        obs.unobserve(el);
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    setTimeout(() => {
-      button.innerHTML = originalHTML;
-      button.style.color = '';
-    }, 2000);
-  }).catch(err => {
-    console.error('Failed to copy:', err);
-  });
-}
+    revealEls.forEach(function (el) { obs.observe(el); });
+  } else {
+    for (var j = 0; j < els.length; j++) els[j].classList.add('revealed');
+  }
+
+  // ---- Terminal typing ----
+  var cmd = 'npx @litodocs/cli init';
+  var typedEl = document.getElementById('typed');
+  var cursorEl = document.getElementById('cursor');
+  var ci = 0;
+
+  function typeNext() {
+    if (!typedEl) return;
+    if (ci < cmd.length) {
+      typedEl.textContent += cmd[ci];
+      ci++;
+      setTimeout(typeNext, 55 + Math.random() * 35);
+    } else {
+      setTimeout(function () {
+        if (cursorEl) cursorEl.style.display = 'none';
+        showOut();
+      }, 500);
+    }
+  }
+
+  function showOut() {
+    ['o1', 'o2', 'o3'].forEach(function (id, i) {
+      setTimeout(function () {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.style.display = 'flex';
+        void el.offsetHeight;
+        el.classList.add('show');
+      }, i * 600);
+    });
+  }
+
+  setTimeout(typeNext, 900);
+})();
