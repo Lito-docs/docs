@@ -118,23 +118,74 @@ Always use CSS variables for colors to ensure dark mode compatibility:
 
 ## Typography
 
-Lito uses a clean, modern typography system:
+Lito uses a clean, modern typography system with three configurable font slots:
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `--font-sans` | Inter | Primary font for UI and content |
-| `--font-mono` | Fira Code | Monospace font for code blocks |
+| `--font-heading` | Syne | Headings (h1–h6) |
+| `--font-sans` | Inter | Body text and UI |
+| `--font-mono` | Fira Code | Code blocks |
 
-### Font Loading
+### Custom Fonts
 
-Fonts are loaded as variable fonts for optimal performance and flexibility:
+You can customize any font via `docs-config.json`. Any [Google Font](https://fonts.google.com) works:
 
-```css
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/inter-variable.woff2') format('woff2');
-  font-weight: 100 900;
-  font-display: swap;
+```json
+{
+  "branding": {
+    "fonts": {
+      "heading": "Syne",
+      "body": "Inter",
+      "code": "Fira Code"
+    }
+  }
+}
+```
+
+All three properties are optional — omit any to keep the default. Lito automatically:
+
+1. Builds the Google Fonts URL with the right weights
+2. Loads only the fonts you specify (deduplicates if heading === body)
+3. Overrides the CSS variables at runtime
+
+<Alert variant="info">
+  Font changes require a dev server restart to take effect.
+</Alert>
+
+### Examples
+
+**Serif headings with sans body:**
+```json
+{
+  "branding": {
+    "fonts": {
+      "heading": "Instrument Serif",
+      "body": "Inter"
+    }
+  }
+}
+```
+
+**All-Syne documentation:**
+```json
+{
+  "branding": {
+    "fonts": {
+      "heading": "Syne",
+      "body": "Syne"
+    }
+  }
+}
+```
+
+**Custom code font:**
+```json
+{
+  "branding": {
+    "fonts": {
+      "code": "JetBrains Mono"
+    }
+  }
 }
 ```
 
