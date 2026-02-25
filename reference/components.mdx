@@ -1,6 +1,6 @@
 ---
 title: Components
-description: "Reference for 20+ built-in MDX components in Lito including Card, Tabs, Steps, Accordion, Callout, CodeGroup, Badge, Tooltip, and Icon"
+description: "Reference for 25+ built-in MDX components in Lito including Card, Tabs, Steps, Accordion, Callout, CodeGroup, FileTree, Image, Badge, Tooltip, Icon, and Changelog"
 keywords:
   - mdx components
   - built-in components
@@ -8,7 +8,7 @@ keywords:
   - documentation components
 author: Lito Team
 publishDate: "2026-01-04"
-modifiedDate: "2026-02-10"
+modifiedDate: "2026-02-25"
 readingTime: 10
 tags:
   - reference
@@ -39,8 +39,9 @@ A simple card component for links or highlights.
 | Prop | Type | Description |
 | :--- | :--- | :--- |
 | `title` | `string` | The card title. |
-| `icon` | `string` | Icon or emoji (optional). |
+| `icon` | `string` | Icon or emoji (optional). Supports Iconify names (e.g. `lucide:rocket`). |
 | `href` | `string` | URL to link to (optional). Makes the card clickable. |
+| `target` | `string` | Link target (e.g. `_blank`). External links (`http...`) automatically open in a new tab. |
 
 ---
 
@@ -467,11 +468,117 @@ A compact card designed for single-link references. Shows an optional icon, titl
 
 ---
 
+## FileTree
+
+Display file and folder structures with syntax highlighting and interactive expand/collapse.
+
+```jsx
+<FileTree highlight="src,package.json">
+- src/
+  - components/
+    - Header.astro
+    - Footer.astro
+  - pages/
+    - index.astro
+- package.json
+- astro.config.mjs
+</FileTree>
+```
+
+<FileTree highlight="src,package.json">
+- src/
+  - components/
+    - Header.astro
+    - Footer.astro
+  - pages/
+    - index.astro
+- package.json
+- astro.config.mjs
+</FileTree>
+
+**Syntax rules:**
+- Each line starts with `- `
+- Folders end with `/` — they become expandable
+- Use 2-space indentation for nesting
+- Highlighted items appear in bold with your primary color
+
+| Prop | Type | Description |
+| :--- | :--- | :--- |
+| `highlight` | `string` | Comma-separated file/folder names to highlight. |
+
+---
+
+## Image
+
+An enhanced image component with lazy loading, captions, and responsive sizing.
+
+```jsx
+<Image
+  src="/screenshot.png"
+  alt="Dashboard screenshot"
+  caption="The admin dashboard"
+  width={800}
+/>
+```
+
+| Prop | Type | Description |
+| :--- | :--- | :--- |
+| `src` | `string` | Image source URL (required). |
+| `alt` | `string` | Alt text for accessibility (required). |
+| `caption` | `string` | Caption displayed below the image. |
+| `width` | `number` | Image width in pixels. |
+| `height` | `number` | Image height in pixels. |
+| `class` | `string` | Additional CSS classes. |
+
+> [!TIP]
+> The Image component automatically applies lazy loading and async decoding for better performance.
+
+---
+
+## YouTube
+
+Embed YouTube videos directly in your documentation. Powered by [astro-embed](https://astro-embed.netlify.app/).
+
+```jsx
+<YouTube id="dQw4w9WgXcQ" />
+```
+
+| Prop | Type | Description |
+| :--- | :--- | :--- |
+| `id` | `string` | YouTube video ID (required). |
+
+---
+
+## Changelog Components
+
+Document release history with structured changelog entries.
+
+```jsx
+<Changelog>
+  <ChangelogEntry version="2.1.0" date="2026-02-20">
+    <ChangelogItem type="added">FileTree component for displaying file structures</ChangelogItem>
+    <ChangelogItem type="added">Image component with lazy loading</ChangelogItem>
+    <ChangelogItem type="fixed">Card external link detection</ChangelogItem>
+    <ChangelogItem type="deprecated">Legacy Alert syntax</ChangelogItem>
+  </ChangelogEntry>
+</Changelog>
+```
+
+| Component | Prop | Type | Description |
+| :--- | :--- | :--- | :--- |
+| `Changelog` | - | - | Container for changelog entries. |
+| `ChangelogEntry` | `version` | `string` | Version number. |
+| `ChangelogEntry` | `date` | `string` | Release date. |
+| `ChangelogItem` | `type` | `string` | Change type: `added`, `fixed`, `changed`, `deprecated`, `removed`. |
+
+---
+
 ## API Documentation Components
 
-For documenting APIs, see the dedicated [API Reference](/reference/api) page which covers:
+For documenting APIs, see the dedicated [API Reference](/reference/api-pages) page which covers:
 
 - `APIEndpoint` - Display API endpoints with method badges
 - `APIPlayground` - Interactive API testing
 - `ParamTable` / `Param` - Parameter documentation
 - `ResponseField` - Response field documentation
+- `RequestExample` / `ResponseExample` - Code examples for requests and responses

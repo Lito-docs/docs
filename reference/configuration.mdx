@@ -1,6 +1,6 @@
 ---
 title: Configuration
-description: "Full reference for docs-config.json including metadata, branding, navigation, SEO, i18n, landing pages, footer, and versioning options"
+description: "Full reference for docs-config.json including metadata, branding, navigation, SEO, i18n, landing pages, footer, versioning, analytics, RSS, and integrations"
 keywords:
   - docs-config.json
   - configuration reference
@@ -8,8 +8,8 @@ keywords:
   - site settings
 author: Lito Team
 publishDate: "2026-01-04"
-modifiedDate: "2026-02-10"
-readingTime: 10
+modifiedDate: "2026-02-25"
+readingTime: 12
 tags:
   - reference
   - configuration
@@ -140,6 +140,39 @@ These options are template-specific. Templates that don't support them will simp
 | `method` | `string` | HTTP method for API docs (`GET`, `POST`, etc.). |
 | `items` | `array` | Nested items for sub-groups. |
 
+### Anchors
+
+Anchors are top-level navigation sections displayed above the sidebar. They filter sidebar groups so each anchor shows only its relevant pages:
+
+```json
+"navigation": {
+  "anchors": [
+    {
+      "label": "Documentation",
+      "href": "/introduction",
+      "icon": "lucide:book-open",
+      "groups": ["Introduction", "Getting Started", "Guides", "Reference"]
+    },
+    {
+      "label": "API Reference",
+      "href": "/api",
+      "icon": "lucide:code",
+      "color": "#3b82f6",
+      "groups": ["API Reference"]
+    }
+  ]
+}
+```
+
+| Property | Type | Description |
+| :--- | :--- | :--- |
+| `label` | `string` | Display text. |
+| `href` | `string` | Default link for this anchor. |
+| `icon` | `string` | Iconify icon name. |
+| `color` | `string` | Optional accent color for the anchor. |
+| `external` | `boolean` | Whether this links externally. |
+| `groups` | `string[]` | Sidebar group labels to show when this anchor is active. |
+
 ### Locale-Specific Sidebars
 
 You can define different sidebars per locale:
@@ -180,7 +213,8 @@ You can define different sidebars per locale:
   "organizationName": "Your Org",
   "articleType": "TechArticle",
   "autoCanonical": true,
-  "enableBreadcrumbs": true
+  "enableBreadcrumbs": true,
+  "autoOgImages": true
 }
 ```
 
@@ -197,6 +231,7 @@ You can define different sidebars per locale:
 | `articleType` | `string` | `TechArticle` | `TechArticle` or `Article`. |
 | `autoCanonical` | `boolean` | `true` | Auto-generate canonical URLs. |
 | `enableBreadcrumbs` | `boolean` | `true` | Enable breadcrumb JSON-LD. |
+| `autoOgImages` | `boolean` | `false` | Auto-generate Open Graph images for every page (1200x630px, uses your primary color). |
 
 ## `i18n`
 
@@ -351,9 +386,13 @@ Templates should support these section types for section-based landings:
   "tagline": "Beautiful docs made simple",
   "copyright": "© {year} Your Company",
   "showBranding": true,
+  "showVersion": true,
   "socials": {
     "github": "https://github.com/...",
-    "twitter": "https://twitter.com/..."
+    "twitter": "https://twitter.com/...",
+    "discord": "https://discord.gg/...",
+    "linkedin": "https://linkedin.com/...",
+    "youtube": "https://youtube.com/..."
   },
   "links": [
     {
@@ -362,9 +401,24 @@ Templates should support these section types for section-based landings:
         { "label": "Documentation", "href": "/docs" }
       ]
     }
+  ],
+  "bottomLinks": [
+    { "label": "Privacy Policy", "href": "/privacy" },
+    { "label": "Terms of Service", "href": "/terms" }
   ]
 }
 ```
+
+| Property | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `layout` | `string` | `full` | Footer layout: `full`, `compact`, or `centered`. |
+| `tagline` | `string` | - | Short tagline text. |
+| `copyright` | `string` | - | Copyright text. `{year}` is replaced with current year. |
+| `showBranding` | `boolean` | `true` | Show "Powered by Lito" branding. |
+| `showVersion` | `boolean` | `false` | Show site version in footer. |
+| `socials` | `object` | - | Social media links (`github`, `twitter`, `discord`, `linkedin`, `youtube`). |
+| `links` | `array` | - | Footer link columns, each with `title` and `items`. |
+| `bottomLinks` | `array` | - | Links displayed at the very bottom (e.g. legal pages). |
 
 ### `theme`
 
@@ -372,28 +426,157 @@ Templates should support these section types for section-based landings:
 "theme": {
   "mode": "auto",
   "defaultDark": false,
+  "hideToggle": false,
   "primaryColor": "#6366f1",
   "accentColor": "#22d3ee"
 }
 ```
 
+| Property | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `mode` | `string` | `auto` | Theme mode: `light`, `dark`, or `auto` (system preference). |
+| `defaultDark` | `boolean` | `false` | Default to dark mode when `mode` is `auto`. |
+| `hideToggle` | `boolean` | `false` | Hide the theme toggle button. |
+| `primaryColor` | `string` | - | Override primary brand color. |
+| `accentColor` | `string` | - | Override accent color. |
+
 ### `integrations`
+
+The `integrations` object controls built-in features for analytics, page feedback, edit links, and more.
+
+#### `integrations.analytics`
+
+See the [Analytics Guide](/guides/analytics) for full provider documentation. Supports: `google-analytics`, `posthog`, `clarity`, `plausible`, `umami`, `fathom`.
 
 ```json
 "integrations": {
   "analytics": {
-    "provider": "google",
-    "measurementId": "G-XXXXXXX"
-  },
-  "feedback": {
-    "enabled": true
-  },
-  "copyPage": {
-    "enabled": true,
-    "position": "bottom-right"
+    "provider": "google-analytics",
+    "measurementId": "G-XXXXXXXXXX"
   }
 }
 ```
+
+#### `integrations.editPage`
+
+Add an "Edit this page" link to every doc page, pointing to your Git repository.
+
+```json
+"integrations": {
+  "editPage": {
+    "enabled": true,
+    "pattern": "https://github.com/your-org/docs/edit/main/{path}"
+  }
+}
+```
+
+| Property | Type | Description |
+| :--- | :--- | :--- |
+| `enabled` | `boolean` | Enable edit page links. |
+| `pattern` | `string` | URL pattern. `{path}` is replaced with the file path. |
+
+#### `integrations.lastUpdated`
+
+Show a "Last updated" timestamp on each page (derived from file modification time).
+
+```json
+"integrations": {
+  "lastUpdated": {
+    "enabled": true,
+    "format": "long"
+  }
+}
+```
+
+| Property | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `enabled` | `boolean` | `false` | Enable last updated display. |
+| `format` | `string` | `long` | Date format: `long`, `short`, or `relative`. |
+
+#### `integrations.feedback`
+
+Enable a "Was this page helpful?" feedback widget.
+
+```json
+"integrations": {
+  "feedback": {
+    "enabled": true,
+    "webhookUrl": "https://hooks.example.com/feedback"
+  }
+}
+```
+
+| Property | Type | Description |
+| :--- | :--- | :--- |
+| `enabled` | `boolean` | Enable feedback widget. |
+| `webhookUrl` | `string` | Optional webhook URL to receive feedback data. |
+
+#### `integrations.rss`
+
+Generate an RSS feed at `/rss.xml` from your sidebar navigation.
+
+```json
+"integrations": {
+  "rss": {
+    "enabled": true,
+    "title": "My Docs Feed",
+    "description": "Latest documentation updates",
+    "limit": 50
+  }
+}
+```
+
+| Property | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `enabled` | `boolean` | `false` | Enable RSS feed generation. |
+| `title` | `string` | Site name | Feed title. |
+| `description` | `string` | Site description | Feed description. |
+| `limit` | `number` | `50` | Maximum number of items in the feed. |
+
+#### `integrations.llmsTxt`
+
+Generate an `llms.txt` file for LLM-friendly site indexing.
+
+```json
+"integrations": {
+  "llmsTxt": {
+    "enabled": true,
+    "title": "My Documentation",
+    "description": "Complete docs for My Product"
+  }
+}
+```
+
+| Property | Type | Description |
+| :--- | :--- | :--- |
+| `enabled` | `boolean` | Enable llms.txt generation. |
+| `title` | `string` | Title for the llms.txt file. |
+| `description` | `string` | Description for the llms.txt file. |
+
+#### `integrations.copyPage`
+
+A floating widget that lets visitors copy the current page content — useful for pasting into AI assistants.
+
+```json
+"integrations": {
+  "copyPage": {
+    "enabled": true,
+    "position": "bottom-right",
+    "aiProviders": [
+      { "name": "chatgpt", "label": "ChatGPT", "icon": "simple-icons:openai" },
+      { "name": "claude", "label": "Claude", "icon": "simple-icons:anthropic" }
+    ],
+    "contextPrompt": "You are a helpful assistant. Use the following documentation to answer questions:"
+  }
+}
+```
+
+| Property | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `enabled` | `boolean` | `false` | Enable copy-page widget. |
+| `position` | `string` | `bottom-right` | Widget position: `bottom-right`, `bottom-left`, `top-right`, `top-left`. |
+| `aiProviders` | `array` | - | AI provider buttons to display. |
+| `contextPrompt` | `string` | - | System prompt prepended when copying for AI. |
 
 ### `versioning`
 

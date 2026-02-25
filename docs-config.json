@@ -6,23 +6,25 @@
     "version": "1.0.0"
   },
   "branding": {
-    "favicon": "/fire-favicon.svg",
+    "favicon": "/logo.png",
     "logo": {
-      "light": "/logo.svg",
-      "dark": "/logo.svg",
-      "href": "/"
+      "light": "/logo.png",
+      "dark": "/logo.png",
+      "href": "/",
+      "height": 32,
+      "replacesTitle": false
     },
     "colors": {
-      "primary": "#f97316",
-      "secondary": "#ea580c",
-      "accent": "#fbbf24",
-      "background": "#fffbeb",
-      "text": "#7c2d12"
+      "primary": "#5BBD7B",
+      "secondary": "#48A868",
+      "accent": "#8FD8A8",
+      "background": "#F0FDF4",
+      "text": "#1E3A2C"
     },
     "fonts": {
-      "heading": "Syne",
-      "body": "Syne",
-      "code": "Fira Code"
+      "heading": "Plus Jakarta Sans",
+      "body": "Inter",
+      "code": "JetBrains Mono"
     }
   },
   "navigation": {
@@ -330,7 +332,7 @@
     "defaultKeywords": ["documentation", "docs", "lito", "astro", "markdown", "mdx", "open source", "mintlify alternative", "static site generator"],
     "enableJsonLd": true,
     "organizationName": "Lito",
-    "organizationLogo": "/logo.svg",
+    "organizationLogo": "/logo.png",
     "articleType": "TechArticle",
     "autoCanonical": true,
     "enableBreadcrumbs": true

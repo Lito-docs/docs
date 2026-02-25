@@ -1,15 +1,19 @@
 ---
 title: Analytics
-description: "Add Google Analytics 4 to your Lito documentation site with zero performance impact using Partytown web worker integration"
+description: "Add analytics to your Lito site with zero performance impact. Supports Google Analytics, PostHog, Microsoft Clarity, Plausible, Umami, and Fathom."
 keywords:
   - google analytics
+  - posthog
+  - plausible
+  - umami
+  - fathom
+  - clarity
   - analytics integration
-  - partytown
   - documentation analytics
 author: Lito Team
 publishDate: "2026-01-04"
-modifiedDate: "2026-02-10"
-readingTime: 2
+modifiedDate: "2026-02-25"
+readingTime: 4
 tags:
   - guides
   - analytics
@@ -18,13 +22,22 @@ section: Guides
 
 # Analytics
 
-Lito supports Google Analytics 4 (GA4) out of the box with zero performance impact.
+Lito supports 6 analytics providers out of the box. Heavier scripts (Google Analytics, PostHog, Clarity) run off the main thread via [Partytown](https://partytown.builder.io/), while lightweight providers (Plausible, Umami, Fathom) load with `defer` — so your Lighthouse scores stay perfect either way.
+
+## Supported Providers
+
+| Provider | Config Key | Weight | Privacy-Focused |
+| :--- | :--- | :--- | :--- |
+| Google Analytics 4 | `google-analytics` | Heavy (Partytown) | No |
+| PostHog | `posthog` | Heavy (Partytown) | Configurable |
+| Microsoft Clarity | `clarity` | Heavy (Partytown) | No |
+| Plausible | `plausible` | Lightweight (~1KB) | Yes |
+| Umami | `umami` | Lightweight (~2KB) | Yes |
+| Fathom | `fathom` | Lightweight (~2KB) | Yes |
+
+---
 
 ## Google Analytics 4
-
-Lito uses [Partytown](https://partytown.builder.io/) to run Google Analytics in a web worker, ensuring your site remains fast and responsive.
-
-To enable it, add the `integrations.analytics` section to your `docs-config.json`:
 
 ```json
 {
@@ -37,12 +50,118 @@ To enable it, add the `integrations.analytics` section to your `docs-config.json
 }
 ```
 
-Replace `G-XXXXXXXXXX` with your actual Google Analytics Measurement ID.
+| Field | Required | Description |
+| :--- | :--- | :--- |
+| `measurementId` | Yes | Your GA4 Measurement ID (starts with `G-`). |
+
+---
+
+## PostHog
+
+```json
+{
+  "integrations": {
+    "analytics": {
+      "provider": "posthog",
+      "apiKey": "phc_XXXXXXXXXX",
+      "apiHost": "https://us.i.posthog.com"
+    }
+  }
+}
+```
+
+| Field | Required | Description |
+| :--- | :--- | :--- |
+| `apiKey` | Yes | Your PostHog project API key. |
+| `apiHost` | No | API host. Defaults to `https://us.i.posthog.com`. |
+
+---
+
+## Microsoft Clarity
+
+```json
+{
+  "integrations": {
+    "analytics": {
+      "provider": "clarity",
+      "projectId": "XXXXXXXXXX"
+    }
+  }
+}
+```
+
+| Field | Required | Description |
+| :--- | :--- | :--- |
+| `projectId` | Yes | Your Clarity project ID. |
+
+---
+
+## Plausible
+
+```json
+{
+  "integrations": {
+    "analytics": {
+      "provider": "plausible",
+      "domain": "docs.example.com"
+    }
+  }
+}
+```
+
+| Field | Required | Description |
+| :--- | :--- | :--- |
+| `domain` | Yes | Your site domain. |
+| `scriptUrl` | No | Custom script URL for self-hosted Plausible. |
+
+---
+
+## Umami
+
+```json
+{
+  "integrations": {
+    "analytics": {
+      "provider": "umami",
+      "websiteId": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+    }
+  }
+}
+```
+
+| Field | Required | Description |
+| :--- | :--- | :--- |
+| `websiteId` | Yes | Your Umami website ID. |
+| `scriptUrl` | No | Custom script URL for self-hosted Umami. |
+
+---
+
+## Fathom
+
+```json
+{
+  "integrations": {
+    "analytics": {
+      "provider": "fathom",
+      "siteId": "XXXXXXXX"
+    }
+  }
+}
+```
+
+| Field | Required | Description |
+| :--- | :--- | :--- |
+| `siteId` | Yes | Your Fathom site ID. |
+| `scriptUrl` | No | Custom script URL for self-hosted Fathom. |
+
+---
 
 ## Performance
 
-By running analytics scripts off the main thread, Lito ensures:
+Lito ensures analytics never degrade your site performance:
 
-- **Perfect Lighthouse Scores**: Analytics scripts don't block the main thread.
-- **Fast Interactions**: UI remains responsive while analytics load.
-- **Privacy**: Scripts are sandboxed in the web worker.
+- **Partytown providers** (GA, PostHog, Clarity) run in a web worker off the main thread, keeping the UI fully responsive.
+- **Lightweight providers** (Plausible, Umami, Fathom) load with `defer` and are only ~1-2KB — negligible impact.
+
+> [!TIP]
+> If you care about visitor privacy and want the smallest footprint, choose **Plausible**, **Umami**, or **Fathom**. All three are cookie-free and GDPR-friendly by default.

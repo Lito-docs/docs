@@ -1,5 +1,13 @@
 // Lito Landing Page Scripts
 (function () {
+  // ---- Theme: respect system preference on first visit ----
+  var stored = localStorage.getItem('theme');
+  if (!stored) {
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.classList.toggle('dark', prefersDark);
+    document.documentElement.classList.toggle('light', !prefersDark);
+  }
+
   // ---- Navbar scroll ----
   var nav = document.getElementById('ln');
   var hero = document.querySelector('.hero');
@@ -36,7 +44,6 @@
 
   // ---- Scroll reveals ----
   var els = document.querySelectorAll('[data-reveal]');
-  // Skip hero children (they use CSS animation)
   var revealEls = [];
   for (var i = 0; i < els.length; i++) {
     if (!els[i].closest('.hero')) revealEls.push(els[i]);
@@ -61,6 +68,21 @@
   } else {
     for (var j = 0; j < els.length; j++) els[j].classList.add('revealed');
   }
+
+  // ---- Showcase tabs ----
+  var tabs = document.querySelectorAll('.sc-tab');
+  var panels = document.querySelectorAll('.sc-panel');
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var target = tab.getAttribute('data-tab');
+      tabs.forEach(function (t) { t.classList.remove('active'); });
+      panels.forEach(function (p) { p.classList.remove('active'); });
+      tab.classList.add('active');
+      var panel = document.querySelector('[data-panel="' + target + '"]');
+      if (panel) panel.classList.add('active');
+    });
+  });
 
   // ---- Terminal typing ----
   var cmd = 'npx @litodocs/cli init';
